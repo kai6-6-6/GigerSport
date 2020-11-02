@@ -4,7 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e00e36e89e604680b4c2e8107b99a728" Name="Diagram1">
+      <Diagram DiagramId="88ba2f094c634b238d19318ff7301a18" Name="Diagram1">
+        <EntityTypeShape EntityType="GigerSportModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GigerSportModel.AspNetRoles" Width="1.5" PointX="9.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GigerSportModel.AspNetUserClaims" Width="1.5" PointX="14.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="GigerSportModel.AspNetUserLogins" Width="1.5" PointX="14.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GigerSportModel.AspNetUsers" Width="1.5" PointX="12" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GigerSportModel.chineseFont" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GigerSportModel.customer" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GigerSportModel.department" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
@@ -17,6 +22,8 @@
         <EntityTypeShape EntityType="GigerSportModel.size" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GigerSportModel.style" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GigerSportModel.undoneOrder" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="GigerSportModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GigerSportModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="GigerSportModel.FK_orderDetail_chineseFont" ManuallyRouted="false" />
         <AssociationConnector Association="GigerSportModel.FK_customer_department" ManuallyRouted="false" />
         <AssociationConnector Association="GigerSportModel.FK_order_customer" ManuallyRouted="false" />
@@ -28,6 +35,7 @@
         <AssociationConnector Association="GigerSportModel.FK_orderDetail_style" ManuallyRouted="false" />
         <AssociationConnector Association="GigerSportModel.FK_player_orderDetail" ManuallyRouted="false" />
         <AssociationConnector Association="GigerSportModel.FK_player_size" ManuallyRouted="false" />
+        <AssociationConnector Association="GigerSportModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
