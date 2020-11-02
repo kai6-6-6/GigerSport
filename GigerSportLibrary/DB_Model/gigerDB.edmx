@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GigerSportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="chineseFont">
+          <Key>
+            <PropertyRef Name="chineseFontId" />
+          </Key>
+          <Property Name="chineseFontId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerId" />
+          </Key>
+          <Property Name="customerId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="phone" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="texId" Type="varchar" MaxLength="20" />
+          <Property Name="department" Type="int" />
+          <Property Name="major" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="departmentId" />
+          </Key>
+          <Property Name="departmentId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="engilshFont">
+          <Key>
+            <PropertyRef Name="engilshFontId" />
+          </Key>
+          <Property Name="engilshFontId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fontColor">
+          <Key>
+            <PropertyRef Name="fontColorId" />
+          </Key>
+          <Property Name="fontColorId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="numberFont">
+          <Key>
+            <PropertyRef Name="numberFontId" />
+          </Key>
+          <Property Name="numberFontId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderNumber" />
+          </Key>
+          <Property Name="orderNumber" Type="int" Nullable="false" />
+          <Property Name="customer" Type="int" Nullable="false" />
+          <Property Name="amount" Type="money" Nullable="false" />
+          <Property Name="orderDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orderDetail">
+          <Key>
+            <PropertyRef Name="orderDetailId" />
+          </Key>
+          <Property Name="orderDetailId" Type="int" Nullable="false" />
+          <Property Name="orderNumber" Type="int" Nullable="false" />
+          <Property Name="style" Type="int" Nullable="false" />
+          <Property Name="frontWord" Type="nchar" MaxLength="10" />
+          <Property Name="frontWordSize" Type="int" />
+          <Property Name="backWord" Type="nchar" MaxLength="10" />
+          <Property Name="backWordSize" Type="int" />
+          <Property Name="chineseFont" Type="int" />
+          <Property Name="englishFont" Type="int" />
+          <Property Name="numberFont" Type="int" />
+          <Property Name="fontColor" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="discount" Type="float" />
+          <Property Name="img" Type="varchar(max)" />
+          <Property Name="playerName" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="playerId" />
+          </Key>
+          <Property Name="playerId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="number" Type="char" MaxLength="10" />
+          <Property Name="leader" Type="bit" Nullable="false" />
+          <Property Name="orderDetailId" Type="int" Nullable="false" />
+          <Property Name="size" Type="int" />
+        </EntityType>
+        <EntityType Name="size">
+          <Key>
+            <PropertyRef Name="sizeId" />
+          </Key>
+          <Property Name="sizeId" Type="int" Nullable="false" />
+          <Property Name="size" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="style">
+          <Key>
+            <PropertyRef Name="styleId" />
+          </Key>
+          <Property Name="styleId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="discount" Type="float" />
+        </EntityType>
+        <EntityType Name="undoneOrder">
+          <Key>
+            <PropertyRef Name="undoneOrderId" />
+          </Key>
+          <Property Name="undoneOrderId" Type="int" Nullable="false" />
+          <Property Name="orderNumber" Type="int" Nullable="false" />
+          <Property Name="orderInfo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_customer_department">
+          <End Role="department" Type="Self.department" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="departmentId" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerId" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_chineseFont">
+          <End Role="chineseFont" Type="Self.chineseFont" Multiplicity="0..1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chineseFont">
+              <PropertyRef Name="chineseFontId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="chineseFont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_engilshFont">
+          <End Role="engilshFont" Type="Self.engilshFont" Multiplicity="0..1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="engilshFont">
+              <PropertyRef Name="engilshFontId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="englishFont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_fontColor">
+          <End Role="fontColor" Type="Self.fontColor" Multiplicity="1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fontColor">
+              <PropertyRef Name="fontColorId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="fontColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_numberFont">
+          <End Role="numberFont" Type="Self.numberFont" Multiplicity="0..1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="numberFont">
+              <PropertyRef Name="numberFontId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="numberFont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_order">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderNumber" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="orderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_style">
+          <End Role="style" Type="Self.style" Multiplicity="1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="style">
+              <PropertyRef Name="styleId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="style" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_player_orderDetail">
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="1" />
+          <End Role="player" Type="Self.player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orderDetail">
+              <PropertyRef Name="orderDetailId" />
+            </Principal>
+            <Dependent Role="player">
+              <PropertyRef Name="orderDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_player_size">
+          <End Role="size" Type="Self.size" Multiplicity="0..1" />
+          <End Role="player" Type="Self.player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="size">
+              <PropertyRef Name="sizeId" />
+            </Principal>
+            <Dependent Role="player">
+              <PropertyRef Name="size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_undoneOrder_order">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="undoneOrder" Type="Self.undoneOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderNumber" />
+            </Principal>
+            <Dependent Role="undoneOrder">
+              <PropertyRef Name="orderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GigerSportModelStoreContainer">
+          <EntitySet Name="chineseFont" EntityType="Self.chineseFont" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="engilshFont" EntityType="Self.engilshFont" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fontColor" EntityType="Self.fontColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="numberFont" EntityType="Self.numberFont" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orderDetail" EntityType="Self.orderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="player" EntityType="Self.player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="size" EntityType="Self.size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="style" EntityType="Self.style" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="undoneOrder" EntityType="Self.undoneOrder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_customer_department" Association="Self.FK_customer_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_customer" Association="Self.FK_order_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_chineseFont" Association="Self.FK_orderDetail_chineseFont">
+            <End Role="chineseFont" EntitySet="chineseFont" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_engilshFont" Association="Self.FK_orderDetail_engilshFont">
+            <End Role="engilshFont" EntitySet="engilshFont" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_fontColor" Association="Self.FK_orderDetail_fontColor">
+            <End Role="fontColor" EntitySet="fontColor" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_numberFont" Association="Self.FK_orderDetail_numberFont">
+            <End Role="numberFont" EntitySet="numberFont" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_order" Association="Self.FK_orderDetail_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_style" Association="Self.FK_orderDetail_style">
+            <End Role="style" EntitySet="style" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_player_orderDetail" Association="Self.FK_player_orderDetail">
+            <End Role="orderDetail" EntitySet="orderDetail" />
+            <End Role="player" EntitySet="player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_player_size" Association="Self.FK_player_size">
+            <End Role="size" EntitySet="size" />
+            <End Role="player" EntitySet="player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_undoneOrder_order" Association="Self.FK_undoneOrder_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="undoneOrder" EntitySet="undoneOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GigerSportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="chineseFont">
+          <Key>
+            <PropertyRef Name="chineseFontId" />
+          </Key>
+          <Property Name="chineseFontId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_orderDetail_chineseFont" FromRole="chineseFont" ToRole="orderDetail" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerId" />
+          </Key>
+          <Property Name="customerId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="texId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="Int32" />
+          <Property Name="major" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="department1" Relationship="Self.FK_customer_department" FromRole="customer" ToRole="department" />
+          <NavigationProperty Name="order" Relationship="Self.FK_order_customer" FromRole="customer" ToRole="order" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="departmentId" />
+          </Key>
+          <Property Name="departmentId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_customer_department" FromRole="department" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="engilshFont">
+          <Key>
+            <PropertyRef Name="engilshFontId" />
+          </Key>
+          <Property Name="engilshFontId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_orderDetail_engilshFont" FromRole="engilshFont" ToRole="orderDetail" />
+        </EntityType>
+        <EntityType Name="fontColor">
+          <Key>
+            <PropertyRef Name="fontColorId" />
+          </Key>
+          <Property Name="fontColorId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_orderDetail_fontColor" FromRole="fontColor" ToRole="orderDetail" />
+        </EntityType>
+        <EntityType Name="numberFont">
+          <Key>
+            <PropertyRef Name="numberFontId" />
+          </Key>
+          <Property Name="numberFontId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_orderDetail_numberFont" FromRole="numberFont" ToRole="orderDetail" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderNumber" />
+          </Key>
+          <Property Name="orderNumber" Type="Int32" Nullable="false" />
+          <Property Name="customer" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="customer1" Relationship="Self.FK_order_customer" FromRole="order" ToRole="customer" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_orderDetail_order" FromRole="order" ToRole="orderDetail" />
+          <NavigationProperty Name="undoneOrder" Relationship="Self.FK_undoneOrder_order" FromRole="order" ToRole="undoneOrder" />
+        </EntityType>
+        <EntityType Name="orderDetail">
+          <Key>
+            <PropertyRef Name="orderDetailId" />
+          </Key>
+          <Property Name="orderDetailId" Type="Int32" Nullable="false" />
+          <Property Name="orderNumber" Type="Int32" Nullable="false" />
+          <Property Name="style" Type="Int32" Nullable="false" />
+          <Property Name="frontWord" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="frontWordSize" Type="Int32" />
+          <Property Name="backWord" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="backWordSize" Type="Int32" />
+          <Property Name="chineseFont" Type="Int32" />
+          <Property Name="englishFont" Type="Int32" />
+          <Property Name="numberFont" Type="Int32" />
+          <Property Name="fontColor" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="discount" Type="Double" />
+          <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="playerName" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="chineseFont1" Relationship="Self.FK_orderDetail_chineseFont" FromRole="orderDetail" ToRole="chineseFont" />
+          <NavigationProperty Name="engilshFont" Relationship="Self.FK_orderDetail_engilshFont" FromRole="orderDetail" ToRole="engilshFont" />
+          <NavigationProperty Name="fontColor1" Relationship="Self.FK_orderDetail_fontColor" FromRole="orderDetail" ToRole="fontColor" />
+          <NavigationProperty Name="numberFont1" Relationship="Self.FK_orderDetail_numberFont" FromRole="orderDetail" ToRole="numberFont" />
+          <NavigationProperty Name="order" Relationship="Self.FK_orderDetail_order" FromRole="orderDetail" ToRole="order" />
+          <NavigationProperty Name="style1" Relationship="Self.FK_orderDetail_style" FromRole="orderDetail" ToRole="style" />
+          <NavigationProperty Name="player" Relationship="Self.FK_player_orderDetail" FromRole="orderDetail" ToRole="player" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="playerId" />
+          </Key>
+          <Property Name="playerId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="leader" Type="Boolean" Nullable="false" />
+          <Property Name="orderDetailId" Type="Int32" Nullable="false" />
+          <Property Name="size" Type="Int32" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_player_orderDetail" FromRole="player" ToRole="orderDetail" />
+          <NavigationProperty Name="size1" Relationship="Self.FK_player_size" FromRole="player" ToRole="size" />
+        </EntityType>
+        <EntityType Name="size">
+          <Key>
+            <PropertyRef Name="sizeId" />
+          </Key>
+          <Property Name="sizeId" Type="Int32" Nullable="false" />
+          <Property Name="size1" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="player" Relationship="Self.FK_player_size" FromRole="size" ToRole="player" />
+        </EntityType>
+        <EntityType Name="style">
+          <Key>
+            <PropertyRef Name="styleId" />
+          </Key>
+          <Property Name="styleId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="discount" Type="Double" />
+          <NavigationProperty Name="orderDetail" Relationship="Self.FK_orderDetail_style" FromRole="style" ToRole="orderDetail" />
+        </EntityType>
+        <EntityType Name="undoneOrder">
+          <Key>
+            <PropertyRef Name="undoneOrderId" />
+          </Key>
+          <Property Name="undoneOrderId" Type="Int32" Nullable="false" />
+          <Property Name="orderNumber" Type="Int32" Nullable="false" />
+          <Property Name="orderInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Self.FK_undoneOrder_order" FromRole="undoneOrder" ToRole="order" />
+        </EntityType>
+        <Association Name="FK_orderDetail_chineseFont">
+          <End Role="chineseFont" Type="Self.chineseFont" Multiplicity="0..1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chineseFont">
+              <PropertyRef Name="chineseFontId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="chineseFont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_customer_department">
+          <End Role="department" Type="Self.department" Multiplicity="0..1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="departmentId" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerId" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_engilshFont">
+          <End Role="engilshFont" Type="Self.engilshFont" Multiplicity="0..1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="engilshFont">
+              <PropertyRef Name="engilshFontId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="englishFont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_fontColor">
+          <End Role="fontColor" Type="Self.fontColor" Multiplicity="1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fontColor">
+              <PropertyRef Name="fontColorId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="fontColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_numberFont">
+          <End Role="numberFont" Type="Self.numberFont" Multiplicity="0..1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="numberFont">
+              <PropertyRef Name="numberFontId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="numberFont" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_order">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderNumber" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="orderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_undoneOrder_order">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="undoneOrder" Type="Self.undoneOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderNumber" />
+            </Principal>
+            <Dependent Role="undoneOrder">
+              <PropertyRef Name="orderNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderDetail_style">
+          <End Role="style" Type="Self.style" Multiplicity="1" />
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="style">
+              <PropertyRef Name="styleId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="style" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_player_orderDetail">
+          <End Role="orderDetail" Type="Self.orderDetail" Multiplicity="1" />
+          <End Role="player" Type="Self.player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orderDetail">
+              <PropertyRef Name="orderDetailId" />
+            </Principal>
+            <Dependent Role="player">
+              <PropertyRef Name="orderDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_player_size">
+          <End Role="size" Type="Self.size" Multiplicity="0..1" />
+          <End Role="player" Type="Self.player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="size">
+              <PropertyRef Name="sizeId" />
+            </Principal>
+            <Dependent Role="player">
+              <PropertyRef Name="size" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GigerSportContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chineseFont" EntityType="Self.chineseFont" />
+          <EntitySet Name="customer" EntityType="Self.customer" />
+          <EntitySet Name="department" EntityType="Self.department" />
+          <EntitySet Name="engilshFont" EntityType="Self.engilshFont" />
+          <EntitySet Name="fontColor" EntityType="Self.fontColor" />
+          <EntitySet Name="numberFont" EntityType="Self.numberFont" />
+          <EntitySet Name="order" EntityType="Self.order" />
+          <EntitySet Name="orderDetail" EntityType="Self.orderDetail" />
+          <EntitySet Name="player" EntityType="Self.player" />
+          <EntitySet Name="size" EntityType="Self.size" />
+          <EntitySet Name="style" EntityType="Self.style" />
+          <EntitySet Name="undoneOrder" EntityType="Self.undoneOrder" />
+          <AssociationSet Name="FK_orderDetail_chineseFont" Association="Self.FK_orderDetail_chineseFont">
+            <End Role="chineseFont" EntitySet="chineseFont" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_customer_department" Association="Self.FK_customer_department">
+            <End Role="department" EntitySet="department" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_customer" Association="Self.FK_order_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_engilshFont" Association="Self.FK_orderDetail_engilshFont">
+            <End Role="engilshFont" EntitySet="engilshFont" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_fontColor" Association="Self.FK_orderDetail_fontColor">
+            <End Role="fontColor" EntitySet="fontColor" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_numberFont" Association="Self.FK_orderDetail_numberFont">
+            <End Role="numberFont" EntitySet="numberFont" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_order" Association="Self.FK_orderDetail_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_undoneOrder_order" Association="Self.FK_undoneOrder_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="undoneOrder" EntitySet="undoneOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderDetail_style" Association="Self.FK_orderDetail_style">
+            <End Role="style" EntitySet="style" />
+            <End Role="orderDetail" EntitySet="orderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_player_orderDetail" Association="Self.FK_player_orderDetail">
+            <End Role="orderDetail" EntitySet="orderDetail" />
+            <End Role="player" EntitySet="player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_player_size" Association="Self.FK_player_size">
+            <End Role="size" EntitySet="size" />
+            <End Role="player" EntitySet="player" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GigerSportModelStoreContainer" CdmEntityContainer="GigerSportContext">
+          <EntitySetMapping Name="chineseFont">
+            <EntityTypeMapping TypeName="GigerSportModel.chineseFont">
+              <MappingFragment StoreEntitySet="chineseFont">
+                <ScalarProperty Name="chineseFontId" ColumnName="chineseFontId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer">
+            <EntityTypeMapping TypeName="GigerSportModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="texId" ColumnName="texId" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="major" ColumnName="major" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="department">
+            <EntityTypeMapping TypeName="GigerSportModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="departmentId" ColumnName="departmentId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="engilshFont">
+            <EntityTypeMapping TypeName="GigerSportModel.engilshFont">
+              <MappingFragment StoreEntitySet="engilshFont">
+                <ScalarProperty Name="engilshFontId" ColumnName="engilshFontId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fontColor">
+            <EntityTypeMapping TypeName="GigerSportModel.fontColor">
+              <MappingFragment StoreEntitySet="fontColor">
+                <ScalarProperty Name="fontColorId" ColumnName="fontColorId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="numberFont">
+            <EntityTypeMapping TypeName="GigerSportModel.numberFont">
+              <MappingFragment StoreEntitySet="numberFont">
+                <ScalarProperty Name="numberFontId" ColumnName="numberFontId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="GigerSportModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="orderNumber" ColumnName="orderNumber" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderDetail">
+            <EntityTypeMapping TypeName="GigerSportModel.orderDetail">
+              <MappingFragment StoreEntitySet="orderDetail">
+                <ScalarProperty Name="orderDetailId" ColumnName="orderDetailId" />
+                <ScalarProperty Name="orderNumber" ColumnName="orderNumber" />
+                <ScalarProperty Name="style" ColumnName="style" />
+                <ScalarProperty Name="frontWord" ColumnName="frontWord" />
+                <ScalarProperty Name="frontWordSize" ColumnName="frontWordSize" />
+                <ScalarProperty Name="backWord" ColumnName="backWord" />
+                <ScalarProperty Name="backWordSize" ColumnName="backWordSize" />
+                <ScalarProperty Name="chineseFont" ColumnName="chineseFont" />
+                <ScalarProperty Name="englishFont" ColumnName="englishFont" />
+                <ScalarProperty Name="numberFont" ColumnName="numberFont" />
+                <ScalarProperty Name="fontColor" ColumnName="fontColor" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="playerName" ColumnName="playerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="player">
+            <EntityTypeMapping TypeName="GigerSportModel.player">
+              <MappingFragment StoreEntitySet="player">
+                <ScalarProperty Name="playerId" ColumnName="playerId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="leader" ColumnName="leader" />
+                <ScalarProperty Name="orderDetailId" ColumnName="orderDetailId" />
+                <ScalarProperty Name="size" ColumnName="size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="size">
+            <EntityTypeMapping TypeName="GigerSportModel.size">
+              <MappingFragment StoreEntitySet="size">
+                <ScalarProperty Name="sizeId" ColumnName="sizeId" />
+                <ScalarProperty Name="size1" ColumnName="size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="style">
+            <EntityTypeMapping TypeName="GigerSportModel.style">
+              <MappingFragment StoreEntitySet="style">
+                <ScalarProperty Name="styleId" ColumnName="styleId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="undoneOrder">
+            <EntityTypeMapping TypeName="GigerSportModel.undoneOrder">
+              <MappingFragment StoreEntitySet="undoneOrder">
+                <ScalarProperty Name="undoneOrderId" ColumnName="undoneOrderId" />
+                <ScalarProperty Name="orderNumber" ColumnName="orderNumber" />
+                <ScalarProperty Name="orderInfo" ColumnName="orderInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
