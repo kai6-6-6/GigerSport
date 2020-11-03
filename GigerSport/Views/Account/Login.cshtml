@@ -3,8 +3,6 @@
 @{
     ViewBag.Title = "登入";
     Layout = "";
-}
-@{
     <link rel="icon" type="image/png" href="~/Assets/img/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="~/Assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/Assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -24,9 +22,9 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal login100-form validate-form flex-sb flex-w", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-            <span class="login100-form-title p-b-51">
-                Manager Login
-            </span>
+                <span class="login100-form-title p-b-51">
+                    Manager Login
+                </span>
                 <hr />
                 <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control input100", name = "username", @type = "text", @placeholder = "E-mail" })
