@@ -11,23 +11,9 @@ namespace GigerSport.Services
     public class OrderDetailService
     {
         private GigerSportDB context = new GigerSportDB();
-        public orderList GetOrderDetail()
+        public List<DetailModel> GetOrderDetail(int orderNumber)
         {
-            var List = new orderList();
-            List.Item=(from o in context.order
-                       join ct in context.customer on o.customer equals ct.customerId
-                       join d in context.department on ct.department equals d.departmentId
-                       join od in context.orderDetail on o.orderNumber equals od.orderNumber
-                       join s in context.style on od.style equals s.styleId
-                       join cf in context.chineseFont on od.chineseFont equals cf.chineseFontId
-                       join ef in context.engilshFont on od.englishFont equals ef.engilshFontId
-                       join nf in context.numberFont on od.numberFont equals nf.numberFontId
-                       join fc in context.fontColor on od.fontColor equals fc.fontColorId
-                       where o.done == true
-                       select new orderItemModel(){
-
-                       }).ToList();
-            List.Detail = (from o in context.order
+            var List = (from o in context.order
                         join ct in context.customer on o.customer equals ct.customerId
                         join d in context.department on ct.department equals d.departmentId
                         join od in context.orderDetail on o.orderNumber equals od.orderNumber
@@ -36,8 +22,8 @@ namespace GigerSport.Services
                         join ef in context.engilshFont on od.englishFont equals ef.engilshFontId
                         join nf in context.numberFont on od.numberFont equals nf.numberFontId
                         join fc in context.fontColor on od.fontColor equals fc.fontColorId
-                        where o.done==true
-                        select new orderDetailModel()
+                        where o.orderNumber== orderNumber
+                        select new DetailModel()
                         {
                             OrderNumber = od.orderNumber,
                             Style = s.style1,
@@ -52,7 +38,16 @@ namespace GigerSport.Services
                             Quantity = od.quantity,
                             Discount = od.discount,
                             Amount = od.amount,
-                            Img = od.img
+                            Img = od.img,
+                            Players=(from p in context.player
+                                     where p.orderDetailId==od.orderDetailId
+                                     select new playersModel
+                                     {
+                                         playerName=p.playerName,
+                                         number=p.number,
+                                         leader=p.leader,
+                                         size=p.size
+                                     }).ToList()
                         }).ToList();
             return List;
         }

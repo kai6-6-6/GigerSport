@@ -6,7 +6,14 @@ using System.Web;
 
 namespace GigerSport.Models
 {
-    public class orderDetailModel
+    public class playersModel
+    {
+        public string playerName { get; set; }
+        public string number { get; set; }
+        public bool leader { get; set; }
+        public int? size { get; set; }
+    }
+    public class DetailModel
     {
         public int OrderNumber { get; set; }
         public string Style { get; set; }
@@ -23,24 +30,6 @@ namespace GigerSport.Models
         public decimal Amount { get; set; }
         public string Img { get; set; }
         public bool PlayerName { get; set; }
-        
+        public List<playersModel> Players { get; set; }
     }
-    public class orderItemModel
-    {
-        public int OrderNumber { get; set; }
-        public DateTime OrderDate { get; set; }
-        public string Customer { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string TexId { get; set; }
-        public string Major { get; set; }
-        public string Department { get; set; }
-        public bool Done { get; set; }
-    }
-    public class orderList
-    {
-        public List<orderDetailModel> Detail { get; set; }
-        public List<orderItemModel> Item { get; set; }
-    }
-    
 }
