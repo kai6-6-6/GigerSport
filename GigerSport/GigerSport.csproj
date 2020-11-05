@@ -260,6 +260,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\OrderDetail\OrderDetail.cshtml" />
+    <Content Include="Views\OrderDetail\OrderItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,7 +269,6 @@
     <Folder Include="Assets\img\" />
     <Folder Include="Assets\js\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\OrderDetail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
