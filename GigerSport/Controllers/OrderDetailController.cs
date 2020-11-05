@@ -9,14 +9,15 @@ namespace GigerSport.Controllers
 {
     public class OrderDetailController : Controller
     {
+        GetOrderService service = new GetOrderService();
         public ActionResult OrderItems()
         {
-            return View();
+            var OrderItem = service.GetOrderItem();
+            return View(OrderItem);
         }
 
         public ActionResult OrderDetail()
         {
-            var service = new OrderDetailService();
             var OrderDetail = service.GetOrderDetail(1);
             return View(OrderDetail);
         }

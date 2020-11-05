@@ -201,7 +201,7 @@
     <Compile Include="Models\orderItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GigerSportRepository.cs" />
-    <Compile Include="Services\OrderDetailService.cs" />
+    <Compile Include="Services\GetOrderService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

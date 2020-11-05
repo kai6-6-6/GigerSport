@@ -8,12 +8,35 @@ using System.Web;
 
 namespace GigerSport.Services
 {
-    public class OrderDetailService
+    public class GetOrderService
     {
         private GigerSportDB context = new GigerSportDB();
+        public List<orderItemModel> GetOrderItem()
+        {
+            var Item = (from o in context.order
+                        join ct in context.customer on o.customer equals ct.customerId
+                        join d in context.department on ct.department equals d.departmentId
+                        select new orderItemModel()
+                        {
+                            OrderNumber=o.orderNumber,
+                            OrderDate=o.orderDate,
+                            Customer=ct.customer1,
+                            Phone=ct.phone,
+                            Email=ct.email,
+                            TexId=ct.texId,
+                            Major=ct.major,
+                            Department=d.department1,
+                            Amount=(from od in context.orderDetail
+                                    where od.orderNumber==o.orderNumber
+                                    group ),
+                            Done=o.done
+                        }).ToList();
+            return null;
+        }
+
         public List<DetailModel> GetOrderDetail(int orderNumber)
         {
-            var List = (from o in context.order
+            var Detail = (from o in context.order
                         join ct in context.customer on o.customer equals ct.customerId
                         join d in context.department on ct.department equals d.departmentId
                         join od in context.orderDetail on o.orderNumber equals od.orderNumber
@@ -26,6 +49,10 @@ namespace GigerSport.Services
                         select new DetailModel()
                         {
                             OrderNumber = od.orderNumber,
+                            Customer = ct.customer1,
+                            Phone = ct.phone,
+                            Email = ct.email,
+                            TexId = ct.texId,
                             Style = s.style1,
                             FrontWord = od.frontWord,
                             FrontWordSize = od.frontWordSize,
@@ -49,7 +76,7 @@ namespace GigerSport.Services
                                          size=p.size
                                      }).ToList()
                         }).ToList();
-            return List;
+            return Detail;
         }
 
     }

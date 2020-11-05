@@ -15,6 +15,10 @@ namespace GigerSport.Models
     }
     public class DetailModel
     {
+        public string Customer { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string TexId { get; set; }
         public int OrderNumber { get; set; }
         public string Style { get; set; }
         public string FrontWord { get; set; }
