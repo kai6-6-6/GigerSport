@@ -18,7 +18,7 @@ namespace GigerSport.Controllers
 
         public ActionResult OrderDetail(int orderNumber)
         {
-            var OrderDetail = service.GetOrderDetail(1);
+            var OrderDetail = service.GetOrderDetail(orderNumber);
             return View(OrderDetail);
         }
         //[HttpPost]

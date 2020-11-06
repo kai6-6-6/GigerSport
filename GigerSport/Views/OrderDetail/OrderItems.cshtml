@@ -30,9 +30,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Amount)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Done)
-        </th>
         <th></th>
     </tr>
 
@@ -66,10 +63,7 @@
             @Html.DisplayFor(modelItem => item.Amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Done)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { orderNumber= item.OrderNumber }) |
+            @Html.ActionLink("Details", "OrderDetail", new { orderNumber= item.OrderNumber }) |
             @Html.ActionLink("Delete", "Delete", new { orderNumber = item.OrderNumber })
         </td>
     </tr>

@@ -65,16 +65,17 @@ namespace GigerSport.Services
                                   Amount=od.amount,
                                   Img=od.img,
                                   Players = (from p in context.player
+                                             join s in context.size on p.size equals s.sizeId
                                             where p.orderDetailId==od.orderDetailId
                                             select new playersModel
                                             {
                                                 playerName=p.playerName,
                                                 number=p.number,
                                                 leader=p.leader,
-                                                size=p.size
+                                                size=s.sizeName
                                             }).ToList()
                               }).ToList();
-            return null;
+            return ListDetail;
         }
 
     }

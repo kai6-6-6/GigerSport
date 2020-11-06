@@ -11,7 +11,7 @@ namespace GigerSport.Models
         public string playerName { get; set; }
         public string number { get; set; }
         public bool? leader { get; set; }
-        public int size { get; set; }
+        public string size { get; set; }
     }
     public class DetailModel
     {
