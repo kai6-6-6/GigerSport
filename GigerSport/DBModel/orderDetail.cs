@@ -25,12 +25,12 @@ namespace GigerSport.DBModel
         [StringLength(50)]
         public string frontWord { get; set; }
 
-        public int? frontWordSizeId { get; set; }
+        public int? frontWordSize { get; set; }
 
         [StringLength(50)]
         public string backWord { get; set; }
 
-        public int? backWordSizeId { get; set; }
+        public int? backWordSize { get; set; }
 
         public int? chineseFontId { get; set; }
 

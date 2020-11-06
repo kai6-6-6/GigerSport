@@ -10,8 +10,8 @@ namespace GigerSport.Models
     {
         public string playerName { get; set; }
         public string number { get; set; }
-        public bool leader { get; set; }
-        public int? size { get; set; }
+        public bool? leader { get; set; }
+        public int size { get; set; }
     }
     public class DetailModel
     {
@@ -19,7 +19,6 @@ namespace GigerSport.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string TexId { get; set; }
-        public int OrderNumber { get; set; }
         public string Style { get; set; }
         public string FrontWord { get; set; }
         public int? FrontWordSize { get; set; }
