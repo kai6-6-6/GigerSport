@@ -72,10 +72,6 @@ namespace GigerSport.DBModel
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<order>()
-                .Property(e => e.total)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<order>()
                 .HasMany(e => e.orderDetail)
                 .WithRequired(e => e.order)
                 .WillCascadeOnDelete(false);

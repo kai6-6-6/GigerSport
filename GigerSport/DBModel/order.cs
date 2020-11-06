@@ -25,9 +25,6 @@ namespace GigerSport.DBModel
         [Column(TypeName = "date")]
         public DateTime orderDate { get; set; }
 
-        [Column(TypeName = "money")]
-        public decimal total { get; set; }
-
         public bool done { get; set; }
 
         public virtual customer customer { get; set; }
