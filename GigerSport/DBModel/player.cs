@@ -13,17 +13,17 @@ namespace GigerSport.DBModel
         public int playerId { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string playerName { get; set; }
 
         [StringLength(10)]
         public string number { get; set; }
 
-        public bool leader { get; set; }
+        public bool? leader { get; set; }
 
         public int orderDetailId { get; set; }
 
-        public int? size { get; set; }
+        public int size { get; set; }
 
         public virtual orderDetail orderDetail { get; set; }
 

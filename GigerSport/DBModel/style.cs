@@ -18,10 +18,9 @@ namespace GigerSport.DBModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int styleId { get; set; }
 
-        [Column("style")]
         [Required]
-        [StringLength(10)]
-        public string style1 { get; set; }
+        [StringLength(50)]
+        public string styleName { get; set; }
 
         public int price { get; set; }
 

@@ -20,25 +20,25 @@ namespace GigerSport.DBModel
 
         public int orderNumber { get; set; }
 
-        public int style { get; set; }
+        public int styleId { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string frontWord { get; set; }
 
-        public int? frontWordSize { get; set; }
+        public int? frontWordSizeId { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string backWord { get; set; }
 
-        public int? backWordSize { get; set; }
+        public int? backWordSizeId { get; set; }
 
-        public int? chineseFont { get; set; }
+        public int? chineseFontId { get; set; }
 
-        public int? englishFont { get; set; }
+        public int? englishFontId { get; set; }
 
-        public int? numberFont { get; set; }
+        public int? numberFontId { get; set; }
 
-        public int fontColor { get; set; }
+        public int fontColorId { get; set; }
 
         public int quantity { get; set; }
 
@@ -51,17 +51,17 @@ namespace GigerSport.DBModel
 
         public bool playerName { get; set; }
 
-        public virtual chineseFont chineseFont1 { get; set; }
+        public virtual chineseFont chineseFont { get; set; }
 
         public virtual engilshFont engilshFont { get; set; }
 
-        public virtual fontColor fontColor1 { get; set; }
+        public virtual fontColor fontColor { get; set; }
 
-        public virtual numberFont numberFont1 { get; set; }
+        public virtual numberFont numberFont { get; set; }
 
         public virtual order order { get; set; }
 
-        public virtual style style1 { get; set; }
+        public virtual style style { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<player> player { get; set; }

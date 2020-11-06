@@ -20,14 +20,17 @@ namespace GigerSport.DBModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int orderNumber { get; set; }
 
-        public int customer { get; set; }
+        public int customerId { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime orderDate { get; set; }
 
+        [Column(TypeName = "money")]
+        public decimal total { get; set; }
+
         public bool done { get; set; }
 
-        public virtual customer customer1 { get; set; }
+        public virtual customer customer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orderDetail> orderDetail { get; set; }

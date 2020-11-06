@@ -18,10 +18,9 @@ namespace GigerSport.DBModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int customerId { get; set; }
 
-        [Column("customer")]
         [Required]
-        [StringLength(10)]
-        public string customer1 { get; set; }
+        [StringLength(50)]
+        public string customerName { get; set; }
 
         [Required]
         [StringLength(20)]
@@ -36,12 +35,12 @@ namespace GigerSport.DBModel
         [StringLength(20)]
         public string texId { get; set; }
 
-        public int? department { get; set; }
+        public int? departmentId { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string major { get; set; }
 
-        public virtual department department1 { get; set; }
+        public virtual department department { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> order { get; set; }

@@ -47,19 +47,6 @@ namespace GigerSport.DBModel
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserId);
 
-            modelBuilder.Entity<chineseFont>()
-                .Property(e => e.chineseFont1)
-                .IsFixedLength();
-
-            modelBuilder.Entity<chineseFont>()
-                .HasMany(e => e.orderDetail)
-                .WithOptional(e => e.chineseFont1)
-                .HasForeignKey(e => e.chineseFont);
-
-            modelBuilder.Entity<customer>()
-                .Property(e => e.customer1)
-                .IsFixedLength();
-
             modelBuilder.Entity<customer>()
                 .Property(e => e.phone)
                 .IsFixedLength()
@@ -70,51 +57,23 @@ namespace GigerSport.DBModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<customer>()
-                .Property(e => e.major)
-                .IsFixedLength();
-
-            modelBuilder.Entity<customer>()
                 .HasMany(e => e.order)
-                .WithRequired(e => e.customer1)
-                .HasForeignKey(e => e.customer)
+                .WithRequired(e => e.customer)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<department>()
-                .Property(e => e.department1)
-                .IsFixedLength();
-
-            modelBuilder.Entity<department>()
-                .HasMany(e => e.customer)
-                .WithOptional(e => e.department1)
-                .HasForeignKey(e => e.department);
-
-            modelBuilder.Entity<engilshFont>()
-                .Property(e => e.engilshFont1)
-                .IsFixedLength();
 
             modelBuilder.Entity<engilshFont>()
                 .HasMany(e => e.orderDetail)
                 .WithOptional(e => e.engilshFont)
-                .HasForeignKey(e => e.englishFont);
-
-            modelBuilder.Entity<fontColor>()
-                .Property(e => e.fontColor1)
-                .IsFixedLength();
+                .HasForeignKey(e => e.englishFontId);
 
             modelBuilder.Entity<fontColor>()
                 .HasMany(e => e.orderDetail)
-                .WithRequired(e => e.fontColor1)
-                .HasForeignKey(e => e.fontColor)
+                .WithRequired(e => e.fontColor)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<numberFont>()
-                .Property(e => e.numberFont1)
-                .IsFixedLength();
-
-            modelBuilder.Entity<numberFont>()
-                .HasMany(e => e.orderDetail)
-                .WithOptional(e => e.numberFont1)
-                .HasForeignKey(e => e.numberFont);
+            modelBuilder.Entity<order>()
+                .Property(e => e.total)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<order>()
                 .HasMany(e => e.orderDetail)
@@ -125,14 +84,6 @@ namespace GigerSport.DBModel
                 .HasMany(e => e.undoneOrder)
                 .WithRequired(e => e.order)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<orderDetail>()
-                .Property(e => e.frontWord)
-                .IsFixedLength();
-
-            modelBuilder.Entity<orderDetail>()
-                .Property(e => e.backWord)
-                .IsFixedLength();
 
             modelBuilder.Entity<orderDetail>()
                 .Property(e => e.amount)
@@ -148,32 +99,24 @@ namespace GigerSport.DBModel
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<player>()
-                .Property(e => e.playerName)
-                .IsFixedLength();
-
-            modelBuilder.Entity<player>()
                 .Property(e => e.number)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<size>()
-                .Property(e => e.size1)
+                .Property(e => e.sizeName)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<size>()
                 .HasMany(e => e.player)
-                .WithOptional(e => e.size1)
-                .HasForeignKey(e => e.size);
-
-            modelBuilder.Entity<style>()
-                .Property(e => e.style1)
-                .IsFixedLength();
+                .WithRequired(e => e.size1)
+                .HasForeignKey(e => e.size)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<style>()
                 .HasMany(e => e.orderDetail)
-                .WithRequired(e => e.style1)
-                .HasForeignKey(e => e.style)
+                .WithRequired(e => e.style)
                 .WillCascadeOnDelete(false);
         }
     }

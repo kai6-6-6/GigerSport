@@ -18,10 +18,9 @@ namespace GigerSport.DBModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int fontColorId { get; set; }
 
-        [Column("fontColor")]
         [Required]
-        [StringLength(10)]
-        public string fontColor1 { get; set; }
+        [StringLength(50)]
+        public string fontColorName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orderDetail> orderDetail { get; set; }

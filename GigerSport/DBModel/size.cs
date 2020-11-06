@@ -18,10 +18,9 @@ namespace GigerSport.DBModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int sizeId { get; set; }
 
-        [Column("size")]
         [Required]
         [StringLength(5)]
-        public string size1 { get; set; }
+        public string sizeName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<player> player { get; set; }
