@@ -22,7 +22,6 @@
     <select>
         <option value=null selected disabled hidden>衣服樣式</option>
     </select>
-
     <input type="text" placeholder="姓名" class="" />
     <input type="text" placeholder="連絡電話" class="" />
     <input type="text" placeholder="收件地址" class="" />
@@ -35,6 +34,25 @@
     <input type="text" placeholder="數量" class="" />
     <input type="text" placeholder="折扣" class="" />
     <input type="text" placeholder="圖" class="" />
-    <button class="add_player">新增球員</button>
-    <input value='ok' type='submit'>
+    <input class="comfirm" value='新增' type='submit'>
+    <div class="players"></div>
 </form>
+<button class="add_player">新增球員</button>
+
+<script>
+    $(".add_player").click(function () {
+        $(".players").append(`
+                <div class="player">
+                <input type="text" placeholder="球員編號" class="" />
+                <input type="text" placeholder="球員姓名" class="" />
+                <select>
+                    <option value=null selected disabled hidden>隊長標記</option>
+                </select>
+                <select>
+                    <option value=null selected disabled hidden>尺寸</option>
+                </select>
+                </div>
+                `)
+    });
+
+</script>
