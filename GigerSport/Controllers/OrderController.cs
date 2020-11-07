@@ -12,17 +12,55 @@ namespace GigerSport.Controllers
     {
         private GetOrderService service = new GetOrderService();
         private GigerSportDB GigerSportDB = new GigerSportDB();
-        public ActionResult OrderItems()
+
+
+        public ActionResult CreateOrder()
         {
-            var OrderItem = service.GetOrderItem();
+
+            return View();
+        }
+
+        // POST: Banners/Create
+        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult CreateOrder([Bind(Include = "Banner1,Title,Sut_title,Text,Banner_photo_url,Last_updata_date")] Banner banner)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //    }
+
+        //    return View(banner);
+        //}
+
+
+
+        public ActionResult DoneOrderItems()
+        {
+            var OrderItem = service.DoneOrderItem();
             return View(OrderItem);
         }
 
-        public ActionResult OrderDetail(int orderNumber)
+        public ActionResult DoneOrderDetail(int orderNumber)
         {
-            var OrderDetail = service.GetOrderDetail(orderNumber);
+            var OrderDetail = service.DoneOrderDetail(orderNumber);
             return View(OrderDetail);
         }
+
+        public ActionResult UnDoneOrderItem()
+        {
+            var OrderItem = service.UnDoneOrderItem();
+            return View(OrderItem);
+        }
+
+        public ActionResult UnDoneOrderDetail(int orderNumber)
+        {
+            var OrderDetail = service.UnDoneOrderDetail(orderNumber);
+            return View(OrderDetail);
+        }
+
 
 
         public ActionResult DeleteItem(int orderNumber)
@@ -30,7 +68,7 @@ namespace GigerSport.Controllers
             order deleteTarget = GigerSportDB.order.Find(orderNumber);
             GigerSportDB.order.Remove(deleteTarget);
             GigerSportDB.SaveChanges();
-            return RedirectToAction("OrderItems");
+            return RedirectToAction("DoneOrderItems");
         }
 
         public ActionResult DeleteDetail(int orderDetailId)
@@ -38,26 +76,8 @@ namespace GigerSport.Controllers
             orderDetail deleteTarget = GigerSportDB.orderDetail.Find(orderDetailId);
             GigerSportDB.orderDetail.Remove(deleteTarget);
             GigerSportDB.SaveChanges();
-            return RedirectToAction("OrderDetail");
+            return RedirectToAction("DoneOrderDetail");
         }
 
-        //[HttpPost]
-        //public ActionResult OrderDetail([Bind(Include = ("Name,Email,Phone,Address,Birthday,Mobile,Gender"))] Account_List_ViewModel account_detail)
-        //{
-        //    if (TempData["ID"] != null)
-        //    {
-        //        var user_name = HttpContext.User.Identity.Name;
-        //        var viewmodel = Account.get_account_detail(user_name);
-        //        var _order = Account.Get_order(viewmodel.Cust_id);
-        //        var _Coupon = Account.Coupon(viewmodel.Cust_id);
-        //        ViewBag.Order = _order;
-        //        account_detail.Discount = _Coupon.Discount;
-        //        account_detail.Cust_id = Convert.ToInt32(TempData["ID"]);
-        //        var service = new AccountDetailService();
-        //        service.Update(account_detail);
-        //    }
-        //    int ID = Convert.ToInt32(TempData["ID"]);
-        //    return View(account_detail);
-        //}
     }
 }

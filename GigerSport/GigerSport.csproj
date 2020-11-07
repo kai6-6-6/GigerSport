@@ -196,6 +196,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CreatModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\orderDetailModel.cs" />
@@ -261,15 +262,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Order\OrderItems.cshtml" />
-    <Content Include="Views\Order\OrderDetail.cshtml" />
+    <Content Include="Views\Order\DoneOrderItems.cshtml" />
+    <Content Include="Views\Order\DoneOrderDetail.cshtml" />
+    <Content Include="Views\Order\UnDoneOrderItem.cshtml" />
+    <Content Include="Views\Order\UnDoneOrderDetail.cshtml" />
+    <Content Include="Views\Order\CreateOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\css\" />
     <Folder Include="Assets\img\" />
     <Folder Include="Assets\js\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>

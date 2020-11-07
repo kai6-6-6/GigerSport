@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                @Html.ActionLink("明細", "OrderDetail", new { orderNumber = item.OrderNumber }) |
+                @Html.ActionLink("明細", "DoneOrderDetail", new { orderNumber = item.OrderNumber }) |
                 <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
                     刪除
                 </a>

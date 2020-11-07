@@ -67,8 +67,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">進行中訂單</a>
-                        <a class="collapse-item" href="cards.html">歷史訂單</a>
+                        @Html.ActionLink("進行中訂單", "UnDoneOrderItem", "Order", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("歷史訂單", "DoneOrderItems", "Order", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
