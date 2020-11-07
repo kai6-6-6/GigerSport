@@ -1,4 +1,5 @@
-﻿using GigerSport.Services;
+﻿using GigerSport.DBModel;
+using GigerSport.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Web.Mvc;
 
 namespace GigerSport.Controllers
 {
-    public class OrderDetailController : Controller
+    public class OrderController : Controller
     {
-        GetOrderService service = new GetOrderService();
+        private GetOrderService service = new GetOrderService();
+        private GigerSportDB GigerSportDB = new GigerSportDB();
         public ActionResult OrderItems()
         {
             var OrderItem = service.GetOrderItem();
@@ -21,6 +23,24 @@ namespace GigerSport.Controllers
             var OrderDetail = service.GetOrderDetail(orderNumber);
             return View(OrderDetail);
         }
+
+
+        public ActionResult DeleteItem(int orderNumber)
+        {
+            order deleteTarget = GigerSportDB.order.Find(orderNumber);
+            GigerSportDB.order.Remove(deleteTarget);
+            GigerSportDB.SaveChanges();
+            return RedirectToAction("OrderItems");
+        }
+
+        public ActionResult DeleteDetail(int orderDetailId)
+        {
+            orderDetail deleteTarget = GigerSportDB.orderDetail.Find(orderDetailId);
+            GigerSportDB.orderDetail.Remove(deleteTarget);
+            GigerSportDB.SaveChanges();
+            return RedirectToAction("OrderDetail");
+        }
+
         //[HttpPost]
         //public ActionResult OrderDetail([Bind(Include = ("Name,Email,Phone,Address,Birthday,Mobile,Gender"))] Account_List_ViewModel account_detail)
         //{

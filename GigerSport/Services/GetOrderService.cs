@@ -47,6 +47,7 @@ namespace GigerSport.Services
                               where od.orderNumber == orderNumber
                               select new DetailModel
                               {
+                                  OrderDetailId=od.orderDetailId,
                                   Customer=ct.customerName,
                                   Phone=ct.phone,
                                   Email=ct.email,
