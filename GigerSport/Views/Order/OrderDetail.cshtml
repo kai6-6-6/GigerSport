@@ -1,0 +1,151 @@
+﻿@model IEnumerable<GigerSport.Models.DetailModel>
+
+<table class="container">
+    <tr class="row">
+        <th class="col">
+            樣式
+        </th>
+        <th class="col">
+            正面內容
+        </th>
+        <th class="col">
+            正面字體大小
+        </th>
+        <th class="col">
+            背面內容
+        </th>
+        <th class="col">
+            背面字體大小
+        </th>
+        <th class="col">
+            中文字體
+        </th>
+        <th class="col">
+            英文字體
+        </th>
+        <th class="col">
+            數字字體
+        </th>
+        <th class="col">
+            字體顏色
+        </th>
+        <th class="col">
+            數量
+        </th>
+        <th class="col">
+            折扣%
+        </th>
+        <th class="col">
+            金額
+        </th>
+        <th class="col">
+            圖示
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.TextBoxFor(modelItem => item.Style, new { PlaceHolder = "姓名", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.Style, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.FrontWord, new { PlaceHolder = "正面內容", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.FrontWordSize, new { PlaceHolder = "正面字體大小", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.FrontWordSize, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.BackWord, new { PlaceHolder = "背面內容", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.BackWord, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.BackWordSize, new { PlaceHolder = "背面字體大小", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.BackWordSize, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.ChineseFont, new { PlaceHolder = "中文字型", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.ChineseFont, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.EngilshFont, new { PlaceHolder = "英文字型", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.EngilshFont, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.NumberFont, new { PlaceHolder = "數字字型", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.NumberFont, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.FontColor, new { PlaceHolder = "字體顏色", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.FontColor, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.Quantity, new { PlaceHolder = "數量", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.Quantity, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(modelItem => item.Discount, new { PlaceHolder = "折扣%", disabled = "true", Type = "text" })
+                @Html.ValidationMessageFor(modelItem => item.Discount, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
+                <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
+                    刪除
+                </a>
+            </td>
+        </tr>
+        if (item.Players.Count() > 0)
+        {
+            <tr>
+                <th>球員號碼</th>
+                <th>姓名</th>
+                <th>尺寸</th>
+                <th>隊長標記</th>
+            </tr>
+            foreach (var player in item.Players)
+            {
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(modelItem => player.number, new { PlaceHolder = "球員號碼", disabled = "true", Type = "text" })
+                        @Html.ValidationMessageFor(modelItem => player.number, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(modelItem => player.playerName, new { PlaceHolder = "球員姓名", disabled = "true", Type = "text" })
+                        @Html.ValidationMessageFor(modelItem => player.playerName, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(modelItem => player.size, new { PlaceHolder = "折球衣大小", disabled = "true", Type = "text" })
+                        @Html.ValidationMessageFor(modelItem => player.size, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(modelItem => player.leader, new { PlaceHolder = "隊長標記", disabled = "true", Type = "text" })
+                        @Html.ValidationMessageFor(modelItem => player.leader, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            }
+        }
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        確定刪除後無法恢復資料!
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                        @Html.ActionLink("刪除", "DeleteDetail", new { orderDetailId = item.OrderDetailId })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</table>
