@@ -1,58 +1,91 @@
-﻿
+﻿@model GigerSport.Models.CreateList
+
 @{
     ViewBag.Title = "CreateOrder";
 }
 
-<h2>新增訂單</h2>
+<h2>CreateOrder</h2>
 
 
-<form>
-    <select>
+@using (Html.BeginForm())
+{
+    <select name="ChineseFontWord">
         <option value=null selected disabled hidden>中文字體</option>
+        @foreach (var item in Model.chinsesFontLists)
+        {
+            <option value=@item.chineseFontId>@item.chineseFontName</option>
+        }
     </select>
-    <select>
+    <select name="EngilshFontWord">
         <option value=null selected disabled hidden>英文字體</option>
+        @foreach (var item in Model.engilshFontLists)
+        {
+            <option value=@item.engilshFontId>@item.engilshFontName</option>
+        }
     </select>
-    <select>
+    <select name="FontColor">
         <option value=null selected disabled hidden>字體顏色</option>
+        @foreach (var item in Model.fontColorLists)
+        {
+            <option value=@item.fontColorId>@item.fontColorName</option>
+        }
     </select>
-    <select>
+    <select name="NumberFontWord">
         <option value=null selected disabled hidden>數字字體</option>
+        @foreach (var item in Model.numberFontLists)
+        {
+            <option value=@item.numberFontId>@item.numberFontName</option>
+        }
     </select>
-    <select>
+    <select name="Style">
         <option value=null selected disabled hidden>衣服樣式</option>
+        @foreach (var item in Model.styleLists)
+        {
+            <option value=@item.styleId>@item.styleName</option>
+        }
     </select>
-    <input type="text" placeholder="姓名" class="" />
-    <input type="text" placeholder="連絡電話" class="" />
-    <input type="text" placeholder="收件地址" class="" />
-    <input type="text" placeholder="信箱" class="" />
-    <input type="text" placeholder="統一編號" class="" />
-    <input type="text" placeholder="學校" class="" />
-    <input type="text" placeholder="正面內容" class="" />
-    <input type="text" placeholder="背面內容" class="" />
-    <input type="text" placeholder="科系" class="" />
-    <input type="text" placeholder="數量" class="" />
-    <input type="text" placeholder="折扣" class="" />
-    <input type="text" placeholder="圖" class="" />
+    <input type="text" placeholder="姓名" class="" name="Name" />
+    <input type="text" placeholder="連絡電話" class="" name="Phone" />
+    <input type="text" placeholder="收件地址" class="" name="Address">
+    <input type="text" placeholder="信箱" class="" name="Email" />
+    <input type="text" placeholder="統一編號" class="" name="Tex" />
+    <input type="text" placeholder="學校" class="" name="Department" />
+    <input type="text" placeholder="正面內容" class="" name="FrontWord" />
+    <input type="text" placeholder="背面內容" class="" name="BackWord" />
+    <input type="text" placeholder="科系" class="" name="Major" />
+    <input type="text" placeholder="數量" class="" name="Quantity" />
+    <input type="text" placeholder="折扣" class="" name="Discount" />
+    <input type="text" placeholder="圖" class="" name="Img" />
     <input class="comfirm" value='新增' type='submit'>
     <div class="players"></div>
-</form>
+}
+
 <button class="add_player">新增球員</button>
 
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 <script>
-    $(".add_player").click(function () {
-        $(".players").append(`
-                <div class="player">
-                <input type="text" placeholder="球員編號" class="" />
-                <input type="text" placeholder="球員姓名" class="" />
-                <select>
-                    <option value=null selected disabled hidden>隊長標記</option>
-                </select>
-                <select>
-                    <option value=null selected disabled hidden>尺寸</option>
-                </select>
-                </div>
-                `)
-    });
+        $(".add_player").click(function () {
+            $(".players").append(`
+                            <div class="player">
+                            <input type="text" placeholder="球員編號" class="" name="PlayerNumber"/>
+                            <input type="text" placeholder="球員姓名" class="" name="PlayerName"/>
+                            <select>
+                                <option value=0>無隊長標記</option>
+                                <option value=1>有隊長標記</option>
+                            </select>
+                            <select name="">
+                                <option value=null selected disabled hidden>尺寸</option>
+                                @foreach(var item in Model.sizeList)
+                                {
+                                    <option value=@item.sizeId>@item.sizeName</option>
+                                }
+                            </select>
+                            </div>
+                            `)
+        });
 
 </script>
+}

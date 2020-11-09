@@ -10,54 +10,47 @@ namespace GigerSport.Controllers
 {
     public class OrderController : Controller
     {
-        private GetOrderService service = new GetOrderService();
+        private GetOrderService GetOrderservice = new GetOrderService();
         private GigerSportDB GigerSportDB = new GigerSportDB();
 
 
         public ActionResult CreateOrder()
         {
-
-            return View();
+            CreateProductList _GetProduct = new CreateProductList();
+            var GetProduct = _GetProduct.GetProductList();
+            return View(GetProduct);
         }
 
-        // POST: Banners/Create
-        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
-        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult CreateOrder([Bind(Include = "Banner1,Title,Sut_title,Text,Banner_photo_url,Last_updata_date")] Banner banner)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //    }
-
-        //    return View(banner);
-        //}
+        [HttpPost]
+        public ActionResult CreateOrder(string Name,string Phone,string Address,string Email,string Tex,string Department, string FrontWord, string BackWord, string Major, int Quantity,double? Discount, string Img,int ChineseFontWord,int EngilshFontWord,int FontColor,int NumberFontWord,int Style)
+        {
+            var receive = Name;
+            return View();
+        }
 
 
 
         public ActionResult DoneOrderItems()
         {
-            var OrderItem = service.DoneOrderItem();
+            var OrderItem = GetOrderservice.DoneOrderItem();
             return View(OrderItem);
         }
 
         public ActionResult DoneOrderDetail(int orderNumber)
         {
-            var OrderDetail = service.DoneOrderDetail(orderNumber);
+            var OrderDetail = GetOrderservice.DoneOrderDetail(orderNumber);
             return View(OrderDetail);
         }
 
         public ActionResult UnDoneOrderItem()
         {
-            var OrderItem = service.UnDoneOrderItem();
+            var OrderItem = GetOrderservice.UnDoneOrderItem();
             return View(OrderItem);
         }
 
         public ActionResult UnDoneOrderDetail(int orderNumber)
         {
-            var OrderDetail = service.UnDoneOrderDetail(orderNumber);
+            var OrderDetail = GetOrderservice.UnDoneOrderDetail(orderNumber);
             return View(OrderDetail);
         }
 

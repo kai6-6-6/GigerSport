@@ -19,7 +19,7 @@ namespace GigerSport.DBModel
         public int customerId { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         public string customerName { get; set; }
 
         [Required]
@@ -35,12 +35,11 @@ namespace GigerSport.DBModel
         [StringLength(20)]
         public string texId { get; set; }
 
-        public int? departmentId { get; set; }
+        [StringLength(20)]
+        public string department { get; set; }
 
-        [StringLength(50)]
+        [StringLength(20)]
         public string major { get; set; }
-
-        public virtual department department { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> order { get; set; }

@@ -181,7 +181,6 @@
     <Compile Include="DBModel\chineseFont.cs" />
     <Compile Include="DBModel\customer.cs" />
     <Compile Include="DBModel\C__MigrationHistory.cs" />
-    <Compile Include="DBModel\department.cs" />
     <Compile Include="DBModel\engilshFont.cs" />
     <Compile Include="DBModel\fontColor.cs" />
     <Compile Include="DBModel\GigerSportDB.cs" />
@@ -191,18 +190,20 @@
     <Compile Include="DBModel\player.cs" />
     <Compile Include="DBModel\size.cs" />
     <Compile Include="DBModel\style.cs" />
+    <Compile Include="DBModel\sysdiagrams.cs" />
     <Compile Include="DBModel\undoneOrder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CreatModel.cs" />
+    <Compile Include="Models\CreateModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\orderDetailModel.cs" />
     <Compile Include="Models\orderItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GigerSportRepository.cs" />
+    <Compile Include="Services\CreateProductList.cs" />
     <Compile Include="Services\GetOrderService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

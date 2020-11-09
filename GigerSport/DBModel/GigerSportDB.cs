@@ -19,7 +19,6 @@ namespace GigerSport.DBModel
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<chineseFont> chineseFont { get; set; }
         public virtual DbSet<customer> customer { get; set; }
-        public virtual DbSet<department> department { get; set; }
         public virtual DbSet<engilshFont> engilshFont { get; set; }
         public virtual DbSet<fontColor> fontColor { get; set; }
         public virtual DbSet<numberFont> numberFont { get; set; }
@@ -28,6 +27,7 @@ namespace GigerSport.DBModel
         public virtual DbSet<player> player { get; set; }
         public virtual DbSet<size> size { get; set; }
         public virtual DbSet<style> style { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<undoneOrder> undoneOrder { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

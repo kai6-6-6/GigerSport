@@ -15,7 +15,6 @@ namespace GigerSport.Services
         {
             var ListItem = (from o in context.order
                             join ct in context.customer on o.customerId equals ct.customerId
-                            join d in context.department on ct.departmentId equals d.departmentId
                             where o.done == true
                             select new orderItemModel
                             {
@@ -26,7 +25,6 @@ namespace GigerSport.Services
                                 Email=ct.email,
                                 TexId=ct.texId,
                                 Major=ct.major,
-                                Department=d.departmentName,
                                 Done=o.done,
                                 Amount=(from od in context.orderDetail
                                         where od.orderNumber==o.orderNumber
@@ -39,7 +37,6 @@ namespace GigerSport.Services
         {
             var ListItem = (from o in context.order
                             join ct in context.customer on o.customerId equals ct.customerId
-                            join d in context.department on ct.departmentId equals d.departmentId
                             where o.done==false
                             select new orderItemModel
                             {
@@ -50,7 +47,6 @@ namespace GigerSport.Services
                                 Email = ct.email,
                                 TexId = ct.texId,
                                 Major = ct.major,
-                                Department = d.departmentName,
                                 Done = o.done,
                                 Amount = (from od in context.orderDetail
                                           where od.orderNumber == o.orderNumber
@@ -78,6 +74,8 @@ namespace GigerSport.Services
                                   Phone=ct.phone,
                                   Email=ct.email,
                                   TexId=ct.texId,
+                                  Department=ct.department,
+                                  Major=ct.major,
                                   Style=s.styleName,
                                   FrontWord=od.frontWord,
                                   FrontWordSize=od.frontWordSize,
@@ -124,6 +122,8 @@ namespace GigerSport.Services
                                   Phone = ct.phone,
                                   Email = ct.email,
                                   TexId = ct.texId,
+                                  Department = ct.department,
+                                  Major = ct.major,
                                   Style = s.styleName,
                                   FrontWord = od.frontWord,
                                   FrontWordSize = od.frontWordSize,

@@ -14,7 +14,6 @@ namespace GigerSport.Models
         public string Email { get; set; }
         public string TexId { get; set; }
         public string Major { get; set; }
-        public string Department { get; set; }
         public decimal Amount { get; set; }
         public bool Done { get; set; }
     }
