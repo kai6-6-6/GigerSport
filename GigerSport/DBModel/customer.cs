@@ -26,14 +26,8 @@ namespace GigerSport.DBModel
         [StringLength(20)]
         public string phone { get; set; }
 
-        [Required]
-        public string address { get; set; }
-
         [StringLength(50)]
         public string email { get; set; }
-
-        [StringLength(20)]
-        public string texId { get; set; }
 
         [StringLength(20)]
         public string department { get; set; }

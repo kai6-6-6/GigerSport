@@ -19,6 +19,7 @@ namespace GigerSport.Models
         public string Customer { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string Address { get; set; }
         public string TexId { get; set; }
         public string Department { get; set; }
         public string Major { get; set; }

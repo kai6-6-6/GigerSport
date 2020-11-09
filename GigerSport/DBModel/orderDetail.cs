@@ -20,6 +20,13 @@ namespace GigerSport.DBModel
 
         public int orderNumber { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string address { get; set; }
+
+        [StringLength(20)]
+        public string texId { get; set; }
+
         public int styleId { get; set; }
 
         [StringLength(50)]

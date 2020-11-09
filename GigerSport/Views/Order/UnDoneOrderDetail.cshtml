@@ -44,6 +44,28 @@
                 <td class="visible-lg-inline-block">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">收件地址</span>
+                        </div>
+                        @Html.TextBoxFor(modelItem => item.Address, new { @calss = "form-control", PlaceHolder = "收件地址", disabled = "true", Type = "text" })
+                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">統一編號</span>
+                        </div>
+                        @Html.TextBoxFor(modelItem => item.TexId, new { @calss = "form-control", PlaceHolder = "統一編號", disabled = "true", Type = "text" })
+                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">單位</span>
+                        </div>
+                        @Html.TextBoxFor(modelItem => item.Department, new { @calss = "form-control", PlaceHolder = "單位", disabled = "true", Type = "text" })
+                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">正面內容</span>
                         </div>
                         @Html.TextBoxFor(modelItem => item.FrontWord, new { @calss = "form-control", PlaceHolder = "正面內容", disabled = "true", Type = "text" })

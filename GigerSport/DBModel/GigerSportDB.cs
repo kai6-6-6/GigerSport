@@ -53,10 +53,6 @@ namespace GigerSport.DBModel
                 .IsUnicode(false);
 
             modelBuilder.Entity<customer>()
-                .Property(e => e.texId)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<customer>()
                 .HasMany(e => e.order)
                 .WithRequired(e => e.customer)
                 .WillCascadeOnDelete(false);
