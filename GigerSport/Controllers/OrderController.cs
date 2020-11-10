@@ -28,7 +28,7 @@ namespace GigerSport.Controllers
             intoDB.InToDB(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
 
 
-            return View();
+            return RedirectToAction("UnDoneOrderItem");
         }
 
 
@@ -61,8 +61,13 @@ namespace GigerSport.Controllers
 
         public ActionResult DeleteItem(int orderNumber)
         {
-            order deleteTarget = GigerSportDB.order.Find(orderNumber);
-            GigerSportDB.order.Remove(deleteTarget);
+            order deleteOrder = GigerSportDB.order.Find(orderNumber);
+            orderDetail deleteOrderDetail = GigerSportDB.orderDetail.Find(orderNumber);
+            var GetorderDetailId = GigerSportDB.orderDetail.Where((x) => x.orderNumber == orderNumber).Select((x) => x.orderDetailId).First();
+            player deletePlayer = GigerSportDB.player.Find(GetorderDetailId);
+            GigerSportDB.order.Remove(deleteOrder);
+            GigerSportDB.orderDetail.Remove(deleteOrderDetail);
+            GigerSportDB.player.Remove(deletePlayer);
             GigerSportDB.SaveChanges();
             return RedirectToAction("DoneOrderItems");
         }
@@ -70,7 +75,12 @@ namespace GigerSport.Controllers
         public ActionResult DeleteDetail(int orderDetailId)
         {
             orderDetail deleteTarget = GigerSportDB.orderDetail.Find(orderDetailId);
+            player deletePlayer = GigerSportDB.player.Find(orderDetailId);
+            var GetorderNumber = GigerSportDB.orderDetail.Where((x) => x.orderDetailId == orderDetailId).Select((x) => x.orderNumber).First();
+            order deleteOrder = GigerSportDB.order.Find(GetorderNumber);
+            GigerSportDB.order.Remove(deleteOrder);
             GigerSportDB.orderDetail.Remove(deleteTarget);
+            GigerSportDB.player.Remove(deletePlayer);
             GigerSportDB.SaveChanges();
             return RedirectToAction("DoneOrderDetail");
         }

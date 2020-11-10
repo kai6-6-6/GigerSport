@@ -11,7 +11,7 @@ namespace GigerSport.Services
     public class OrderInToDB
     {
         private GigerSportDB context = new GigerSportDB();
-        public void InToDB(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord,int FrontWordSize, string BackWord,int BackWordSize, string Major, int Quantity, double Discount, string Img, int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize)
+        public void InToDB(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord, int FrontWordSize, string BackWord, int BackWordSize, string Major, int Quantity, double Discount, string Img, int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize)
         {
             GigerSportRepository<customer> Ride_customer = new GigerSportRepository<customer>(context);
             GigerSportRepository<order> Ride_order = new GigerSportRepository<order>(context);
@@ -19,13 +19,13 @@ namespace GigerSport.Services
             GigerSportRepository<player> Ride_player = new GigerSportRepository<player>(context);
             var makeCustomerId = context.customer.Select((x) => x.customerId).Max();
             var makeOrderDetailId = context.orderDetail.Select((x) => x.orderDetailId).Max();
-            var FindCustomer = context.customer.FirstOrDefault((x)=>x.customerName== Name);
+            var FindCustomer = context.customer.FirstOrDefault((x) => x.customerName == Name);
             int newCustomerId;
-            if (FindCustomer != null){
+            if (FindCustomer != null)
+            {
                 FindCustomer.phone = Phone; FindCustomer.email = Email; FindCustomer.department = Department;
                 newCustomerId = makeCustomerId;
-                //Ride_customer.Update(FindCustomer);
-                //context.SaveChanges();
+                Ride_customer.Update(FindCustomer);
             }
             else
             {
@@ -39,9 +39,9 @@ namespace GigerSport.Services
                     department = Department,
                     major = Major
                 };
-                //Ride_customer.Create(AddCustomer);
+                Ride_customer.Create(AddCustomer);
             }
-            var OrderNumber = int.Parse(DateTime.Now.ToString("yyyyMMddHHmm"));
+            var OrderNumber = int.Parse(DateTime.Now.ToString("MMddHHmm"));
             order AddOrder = new order()
             {
                 orderNumber = OrderNumber,
@@ -49,15 +49,26 @@ namespace GigerSport.Services
                 orderDate = DateTime.Now,
                 done = false
             };
-            //Ride_order.Create(AddOrder);
+            Ride_order.Create(AddOrder);
             bool HasplayerList = false;
             if (PlayerName.Length > 0)
             {
-                player AddPlayer = new player()
-                {
-                    
-                };
+                var makePlayerId = context.player.Select((x) => x.playerId).Max();
                 HasplayerList = true;
+                for (var i = 0; i < PlayerName.Length; i++)
+                {
+                    player AddPlayer = new player()
+                    {
+                        playerId = makePlayerId + i + 1,
+                        playerName = PlayerName[i],
+                        number = PlayerNumber[i],
+                        leader = LeaderMark[i],
+                        orderDetailId = makeOrderDetailId + 1,
+                        size = PlayerSize[i]
+                    };
+                    Ride_player.Create(AddPlayer);
+                }
+
             }
             orderDetail AddOrderDetail = new orderDetail()
             {
@@ -81,6 +92,7 @@ namespace GigerSport.Services
                 playerName = HasplayerList
             };
             Ride_orderDetail.Create(AddOrderDetail);
+            context.SaveChanges();
         }
     }
 }
