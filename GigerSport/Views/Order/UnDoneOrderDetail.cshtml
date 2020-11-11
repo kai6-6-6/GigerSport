@@ -7,6 +7,20 @@
 
 @using (Html.BeginForm())
 {
+    <input type="text" placeholder="姓名" class="" name="Name" disabled="true" required value=@Model.detailModel.Customer>
+    <input type="text" placeholder="連絡電話" class="" name="Phone" disabled="true" required value=@Model.detailModel.Phone>
+    <input type="text" placeholder="收件地址" class="" name="Address" disabled="true" required value=@Model.detailModel.Address>
+    <input type="text" placeholder="信箱" class="" name="Email" disabled="true" value=@Model.detailModel.Email>
+    <input type="text" placeholder="統一編號" class="" name="Tex" disabled="true" value=@Model.detailModel.TexId>
+    <input type="text" placeholder="學校" class="" name="Department" disabled="true" value=@Model.detailModel.Department>
+    <input type="text" placeholder="科系" class="" name="Major" disabled="true" value=@Model.detailModel.Major>
+    <input type="text" placeholder="正面內容" class="" name="FrontWord" disabled="true" value=@Model.detailModel.FrontWord>
+    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" disabled="true" required value=@Model.detailModel.FrontWordSize>
+    <input type="text" placeholder="背面內容" class="" name="BackWord" disabled="true" value=@Model.detailModel.BackWord>
+    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" disabled="true" required value=@Model.detailModel.BackWordSize>
+    <input type="text" placeholder="數量" class="" name="Quantity" disabled="true" required value=@Model.detailModel.Quantity>
+    <input type="text" placeholder="折扣" class="" name="Discount" disabled="true" value=@Model.detailModel.Discount>
+    <input type="text" placeholder="圖" class="" name="Img" disabled="true" value=@Model.detailModel.Img>
     <select name="ChineseFontWord" disabled="true">
         <option value=@Model.detailModel.ChineseFontId selected disabled hidden>@Model.detailModel.ChineseFont</option>
         @foreach (var item in Model.createList.chinsesFontLists)
@@ -42,20 +56,6 @@
             <option value=@item.styleId>@item.styleName</option>
         }
     </select>
-    <input type="text" placeholder="姓名" class="" name="Name" disabled="true" value=@Model.detailModel.Customer>
-    <input type="text" placeholder="連絡電話" class="" name="Phone" disabled="true" value=@Model.detailModel.Phone>
-    <input type="text" placeholder="收件地址" class="" name="Address" disabled="true" value=@Model.detailModel.Address>
-    <input type="text" placeholder="信箱" class="" name="Email" disabled="true" value=@Model.detailModel.Email>
-    <input type="text" placeholder="統一編號" class="" name="Tex" disabled="true" value=@Model.detailModel.TexId>
-    <input type="text" placeholder="學校" class="" name="Department" disabled="true" value=@Model.detailModel.Department>
-    <input type="text" placeholder="科系" class="" name="Major" disabled="true" value=@Model.detailModel.Major>
-    <input type="text" placeholder="正面內容" class="" name="FrontWord" disabled="true" value=@Model.detailModel.FrontWord>
-    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" disabled="true" value=@Model.detailModel.FrontWordSize>
-    <input type="text" placeholder="背面內容" class="" name="BackWord" disabled="true" value=@Model.detailModel.BackWord>
-    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" disabled="true" value=@Model.detailModel.BackWordSize>
-    <input type="text" placeholder="數量" class="" name="Quantity" disabled="true" value=@Model.detailModel.Quantity>
-    <input type="text" placeholder="折扣" class="" name="Discount" disabled="true" value=@Model.detailModel.Discount>
-    <input type="text" placeholder="圖" class="" name="Img" disabled="true" value=@Model.detailModel.Img>
     if (Model.detailModel.Players.Count() > 0)
     {
         <table>
@@ -106,12 +106,12 @@
             </tbody>
         </table>
     }
-    <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#finishModal">
+    <a class="btn-group" href="~/Views/" data-toggle="modal" data-target="#finishModal">
         已完成訂單
     </a>
 }
 
-<button type="button" class="Edit">編輯 |</button>
+<button type="button" class="Edit">編輯</button> |
 
 @Html.ActionLink("保存", "Edit", new { @class = "KeepEdit", disabled = "true" }) |
 
@@ -149,7 +149,7 @@
 @section endJS{
     <script>
         let edit_btn = document.querySelector('.Edit');
-        let all = document.querySelectorAll('input,select,.KeepEdit');
+        let all = document.querySelectorAll('input,select');
         edit_btn.addEventListener('click', () => {
             all.forEach(item => {
                 if (item.hasAttribute('disabled')) {

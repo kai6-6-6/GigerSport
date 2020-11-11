@@ -23,7 +23,7 @@
             <option value=@item.engilshFontId>@item.engilshFontName</option>
         }
     </select>
-    <select name="FontColor">
+    <select name="FontColor" required>
         <option value=null selected disabled hidden>字體顏色</option>
         @foreach (var item in Model.fontColorLists)
         {
@@ -37,25 +37,25 @@
             <option value=@item.numberFontId>@item.numberFontName</option>
         }
     </select>
-    <select name="Style">
+    <select name="Style" required>
         <option value=null selected disabled hidden>衣服樣式</option>
         @foreach (var item in Model.styleLists)
         {
             <option value=@item.styleId>@item.styleName</option>
         }
     </select>
-    <input type="text" placeholder="姓名" class="" name="Name" />
-    <input type="text" placeholder="連絡電話" class="" name="Phone" />
-    <input type="text" placeholder="收件地址" class="" name="Address">
+    <input type="text" placeholder="姓名" class="" name="Name" required/>
+    <input type="text" placeholder="連絡電話" class="" name="Phone" required/>
+    <input type="text" placeholder="收件地址" class="" name="Address" required/>
     <input type="text" placeholder="信箱" class="" name="Email" />
     <input type="text" placeholder="統一編號" class="" name="Tex" />
     <input type="text" placeholder="學校" class="" name="Department" />
     <input type="text" placeholder="科系" class="" name="Major" />
     <input type="text" placeholder="正面內容" class="" name="FrontWord" />
-    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" />
+    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" required/>
     <input type="text" placeholder="背面內容" class="" name="BackWord" />
-    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" />
-    <input type="text" placeholder="數量" class="" name="Quantity" />
+    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" required/>
+    <input type="text" placeholder="數量" class="" name="Quantity" required/>
     <input type="text" placeholder="折扣" class="" name="Discount" />
     <input type="text" placeholder="圖" class="" name="Img" />
     <button type="button" class="add_player">新增球員</button>
@@ -71,13 +71,13 @@
         $(".add_player").click(function () {
             $(".players").append(`
                             <div class="player">
-                            <input type="text" placeholder="球員編號" class="" name="PlayerNumber"/>
-                            <input type="text" placeholder="球員姓名" class="" name="PlayerName"/>
+                            <input type="text" placeholder="球員編號" class="" name="PlayerNumber" required/>
+                            <input type="text" placeholder="球員姓名" class="" name="PlayerName" required/>
                             <select name="LeaderMark">
                                 <option value=false>無隊長標記</option>
                                 <option value=true>有隊長標記</option>
                             </select>
-                            <select name="PlayerSize">
+                            <select name="PlayerSize" required>
                                 <option value=null selected disabled hidden>尺寸</option>
                                 @foreach(var item in Model.sizeList)
                                 {
