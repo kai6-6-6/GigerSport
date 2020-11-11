@@ -44,7 +44,7 @@ namespace GigerSport.Controllers
         }
         public ActionResult UnDoneOrderDetail(int orderNumber)
         {
-            var OrderDetail = GetOrderservice.UnDoneOrderDetail(orderNumber);
+            var OrderDetail = GetOrderservice.EditOrderDetail(orderNumber);
             return View(OrderDetail);
         }
         public ActionResult DeleteDetail(int orderDetailId)

@@ -12,6 +12,7 @@ namespace GigerSport.Models
         public string number { get; set; }
         public bool? leader { get; set; }
         public string size { get; set; }
+        public int sizeId { get; set; }
     }
     public class DetailModel
     {
@@ -24,14 +25,19 @@ namespace GigerSport.Models
         public string Department { get; set; }
         public string Major { get; set; }
         public string Style { get; set; }
+        public int StyleId { get; set; }
         public string FrontWord { get; set; }
         public int? FrontWordSize { get; set; }
         public string BackWord { get; set; }
         public int? BackWordSize { get; set; }
         public string ChineseFont { get; set; }
+        public int ChineseFontId { get; set; }
         public string EngilshFont { get; set; }
+        public int EngilshFontId { get; set; }
         public string NumberFont { get; set; }
+        public int NumberFontId { get; set; }
         public string FontColor { get; set; }
+        public int FontColorId { get; set; }
         public int Quantity { get; set; }
         public double? Discount { get; set; }
         public decimal Amount { get; set; }

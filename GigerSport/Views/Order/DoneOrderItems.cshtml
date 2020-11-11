@@ -1,4 +1,4 @@
-﻿    @model IEnumerable<GigerSport.Models.orderItemModel>
+﻿@model IEnumerable<GigerSport.Models.orderItemModel>
 
 
 <table class="table">
@@ -53,9 +53,9 @@
             </td>
             <td>
                 @Html.ActionLink("明細", "DoneOrderDetail", new { orderNumber = item.OrderNumber })
-                <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
+                @*<a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
                     刪除
-                </a>
+                </a>*@
             </td>
         </tr>
         @*<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
