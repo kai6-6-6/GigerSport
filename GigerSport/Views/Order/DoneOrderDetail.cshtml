@@ -1,9 +1,8 @@
 ﻿@model GigerSport.Models.EditDetaiModel
 
 @{
-    ViewBag.Title = "UnDoneOrderDetail";
+    ViewBag.Title = "DoneOrderDetail";
 }
-<h2>UnDoneOrderDetail</h2>
 
 @using (Html.BeginForm())
 {
@@ -106,14 +105,8 @@
             </tbody>
         </table>
     }
-    <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#finishModal">
-        已完成訂單
-    </a>
 }
 
-<button type="button" class="Edit">編輯 |</button>
-
-@Html.ActionLink("保存", "Edit", new { @class = "KeepEdit", disabled = "true" }) |
 
 <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
     刪除
@@ -132,32 +125,3 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                將移至歷史訂單，且無法恢復成未完成訂單!
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                @Html.ActionLink("確定", "FinishDetail", new { orderDetailId = Model.detailModel.OrderDetailId })
-            </div>
-        </div>
-    </div>
-</div>
-@section endJS{
-    <script>
-        let edit_btn = document.querySelector('.Edit');
-        let all = document.querySelectorAll('input,select,.KeepEdit');
-        edit_btn.addEventListener('click', () => {
-            all.forEach(item => {
-                if (item.hasAttribute('disabled')) {
-                    item.removeAttribute('disabled');
-                } else {
-                    item.setAttribute('disabled', 'true')
-                }
-            })
-        });
-    </script>
-}

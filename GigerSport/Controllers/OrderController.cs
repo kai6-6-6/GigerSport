@@ -51,7 +51,16 @@ namespace GigerSport.Controllers
         {
             DeleteOrder deleteOrder = new DeleteOrder();
             deleteOrder.DeleteTarget(orderDetailId);
-            return View();
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult FinishDetail(int orderDetailId)
+        {
+            GigerSportDB context = new GigerSportDB();
+            var GetOrder = context.orderDetail.Where((x) => x.orderDetailId == orderDetailId).Select((x) => x.orderNumber).First();
+            order ChangeToDone = new order();
+            ChangeToDone.done = true;
+            context.SaveChanges();
+            return RedirectToAction("DoneOrderDetail");
         }
     }
 }

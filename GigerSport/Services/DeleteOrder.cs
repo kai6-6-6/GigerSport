@@ -25,6 +25,7 @@ namespace GigerSport.Services
             }
             Del_orderDetail.Delete(FindOrderDetail);
             Del_order.Delete(FindOrder);
+            context.SaveChanges();
         }
     }
 }
