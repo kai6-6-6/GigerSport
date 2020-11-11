@@ -27,9 +27,6 @@ namespace GigerSport.Controllers
 
             return RedirectToAction("UnDoneOrderItem");
         }
-
-
-
         public ActionResult DoneOrderItems()
         {
             var OrderItem = GetOrderservice.DoneOrderItem();
@@ -68,7 +65,6 @@ namespace GigerSport.Controllers
         //    GigerSportDB.SaveChanges();
         //    return RedirectToAction("DoneOrderItems");
         //}
-
         public ActionResult DeleteDetail(int orderDetailId)
         {
             DeleteOrder deleteOrder = new DeleteOrder();
