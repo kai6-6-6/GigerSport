@@ -32,39 +32,21 @@ namespace GigerSport.Controllers
             var OrderItem = GetOrderservice.DoneOrderItem();
             return View(OrderItem);
         }
-
         public ActionResult DoneOrderDetail(int orderNumber)
         {
             var OrderDetail = GetOrderservice.DoneOrderDetail(orderNumber);
             return View(OrderDetail);
         }
-
         public ActionResult UnDoneOrderItem()
         {
             var OrderItem = GetOrderservice.UnDoneOrderItem();
             return View(OrderItem);
         }
-
         public ActionResult UnDoneOrderDetail(int orderNumber)
         {
             var OrderDetail = GetOrderservice.UnDoneOrderDetail(orderNumber);
             return View(OrderDetail);
         }
-
-
-
-        //public ActionResult DeleteItem(int orderNumber)
-        //{
-        //    order deleteOrder = GigerSportDB.order.Find(orderNumber);
-        //    orderDetail deleteOrderDetail = GigerSportDB.orderDetail.Find(orderNumber);
-        //    var GetorderDetailId = GigerSportDB.orderDetail.Where((x) => x.orderNumber == orderNumber).Select((x) => x.orderDetailId).First();
-        //    player deletePlayer = GigerSportDB.player.Find(GetorderDetailId);
-        //    GigerSportDB.order.Remove(deleteOrder);
-        //    GigerSportDB.orderDetail.Remove(deleteOrderDetail);
-        //    GigerSportDB.player.Remove(deletePlayer);
-        //    GigerSportDB.SaveChanges();
-        //    return RedirectToAction("DoneOrderItems");
-        //}
         public ActionResult DeleteDetail(int orderDetailId)
         {
             DeleteOrder deleteOrder = new DeleteOrder();

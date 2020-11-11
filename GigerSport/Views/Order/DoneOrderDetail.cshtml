@@ -1,225 +1,194 @@
-﻿@model IEnumerable<GigerSport.Models.DetailModel>
+﻿@model GigerSport.Models.DetailModel
 
+@{
+    ViewBag.Title = "DoneOrderDetail";
+}
 
-<table class="table">
+<h2>DoneOrderDetail</h2>
 
-    <tbody>
-        <tr>
-            <th>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">買家</span>
-                    </div>
-                    @Html.DisplayFor(model => model.First().Customer)
-                </div>
-            </th>
-            <th>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">連絡電話</span>
-                    </div>
-                    @Html.DisplayFor(model => model.First().Phone)
-                </div>
-            </th>
-            <th>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">信箱</span>
-                    </div>
-                    @Html.DisplayFor(model => model.First().Email)
-                </div>
-            </th>
-            <th>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">統一編號</span>
-                    </div>
-                    @Html.DisplayFor(model => model.First().TexId)
-                </div>
-            </th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="visible-lg-inline-block">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">收件地址</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.Address, new { @calss = "form-control", PlaceHolder = "收件地址", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">統一編號</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.TexId, new { @calss = "form-control", PlaceHolder = "統一編號", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">單位</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.Department, new { @calss = "form-control", PlaceHolder = "單位", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">正面內容</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.FrontWord, new { @calss = "form-control", PlaceHolder = "正面內容", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.FrontWord, "", new { @class = "text-danger" })*@
-                    </div>
+<div>
+    <h4>DetailModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDetailId)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">正面字體大小</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.FrontWordSize, new { @calss = "form-control", PlaceHolder = "正面字體大小", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.FrontWordSize, "", new { @class = "text-danger" })*@
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.OrderDetailId)
+        </dd>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">背面內容</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.BackWord, new { @calss = "form-control", PlaceHolder = "背面內容", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.BackWord, "", new { @class = "text-danger" })*@
-                    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">背面字體大小</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.BackWordSize, new { @calss = "form-control", PlaceHolder = "背面字體大小", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.BackWordSize, "", new { @class = "text-danger" })*@
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Customer)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">中文字型</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.ChineseFont, new { @calss = "form-control", PlaceHolder = "中文字型", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.ChineseFont, "", new { @class = "text-danger" })*@
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">英文字型</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.EngilshFont, new { @calss = "form-control", PlaceHolder = "英文字型", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.EngilshFont, "", new { @class = "text-danger" })*@
-                    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">數字字型</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.NumberFont, new { @calss = "form-control", PlaceHolder = "數字字型", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.NumberFont, "", new { @class = "text-danger" })*@
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">字體顏色</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.FontColor, new { @calss = "form-control", PlaceHolder = "字體顏色", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.FontColor, "", new { @class = "text-danger" })*@
-                    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">樣式</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.Style, new { @calss = "form-control", PlaceHolder = "樣式", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.Style, "", new { @class = "text-danger" })*@
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">數量</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.Quantity, new { @calss = "form-control", PlaceHolder = "數量", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.Quantity, "", new { @class = "text-danger" })*@
-                    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.TexId)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">折扣(小數)</span>
-                        </div>
-                        @Html.TextBoxFor(modelItem => item.Discount, new { @calss = "form-control", PlaceHolder = "折扣(小數)", disabled = "true", Type = "text" })
-                        @*@Html.ValidationMessageFor(modelItem => item.Discount, "", new { @class = "text-danger" })*@
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.TexId)
+        </dd>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">金額</span>
-                        </div>
-                        @Html.DisplayFor(modelItem => item.Amount)
-                    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">圖示</span>
-                        </div>
-                        @Html.DisplayFor(modelItem => item.Img)
-                    </div>
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
 
-                    @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
-                        刪除
-                    </a>
-                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    確定刪除後無法恢復資料!
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                                    @Html.ActionLink("刪除", "DeleteDetail", new { orderDetailId = item.OrderDetailId })
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+        <dt>
+            @Html.DisplayNameFor(model => model.Major)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Major)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Style)
+        </dt>
 
-            if (item.Players.Count() > 0)
-            {
-                <tr class="thead-light">
-                    <th>球員號碼</th>
-                    <th>姓名</th>
-                    <th>尺寸</th>
-                    <th>隊長標記</th>
-                </tr>
-                foreach (var player in item.Players)
-                {
-                    <tr>
-                        <td>
-                            @Html.TextBoxFor(modelItem => player.number, new { PlaceHolder = "球員號碼", disabled = "true", Type = "text" })
-                            @Html.ValidationMessageFor(modelItem => player.number, "", new { @class = "text-danger" })
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(modelItem => player.playerName, new { PlaceHolder = "球員姓名", disabled = "true", Type = "text" })
-                            @Html.ValidationMessageFor(modelItem => player.playerName, "", new { @class = "text-danger" })
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(modelItem => player.size, new { PlaceHolder = "折球衣大小", disabled = "true", Type = "text" })
-                            @Html.ValidationMessageFor(modelItem => player.size, "", new { @class = "text-danger" })
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(modelItem => player.leader, new { PlaceHolder = "隊長標記", disabled = "true", Type = "text" })
-                            @Html.ValidationMessageFor(modelItem => player.leader, "", new { @class = "text-danger" })
-                        </td>
-                    </tr>
-                }
-            }
+        <dd>
+            @Html.DisplayFor(model => model.Style)
+        </dd>
 
-        }
-    </tbody>
-</table>
+        <dt>
+            @Html.DisplayNameFor(model => model.FrontWord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrontWord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrontWordSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrontWordSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackWord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackWord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackWordSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackWordSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChineseFont)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChineseFont)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngilshFont)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngilshFont)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberFont)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberFont)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FontColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FontColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayerName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

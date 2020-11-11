@@ -266,10 +266,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Order\DoneOrderItems.cshtml" />
-    <Content Include="Views\Order\DoneOrderDetail.cshtml" />
     <Content Include="Views\Order\UnDoneOrderItem.cshtml" />
-    <Content Include="Views\Order\UnDoneOrderDetail.cshtml" />
     <Content Include="Views\Order\CreateOrder.cshtml" />
+    <Content Include="Views\Order\DoneOrderDetail.cshtml" />
+    <Content Include="Views\Order\UnDoneOrderDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
