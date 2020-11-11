@@ -11,9 +11,6 @@ namespace GigerSport.Controllers
     public class OrderController : Controller
     {
         private GetOrderService GetOrderservice = new GetOrderService();
-        private GigerSportDB GigerSportDB = new GigerSportDB();
-
-
         public ActionResult CreateOrder()
         {
             CreateProductList _GetProduct = new CreateProductList();
@@ -59,31 +56,24 @@ namespace GigerSport.Controllers
 
 
 
-        public ActionResult DeleteItem(int orderNumber)
-        {
-            order deleteOrder = GigerSportDB.order.Find(orderNumber);
-            orderDetail deleteOrderDetail = GigerSportDB.orderDetail.Find(orderNumber);
-            var GetorderDetailId = GigerSportDB.orderDetail.Where((x) => x.orderNumber == orderNumber).Select((x) => x.orderDetailId).First();
-            player deletePlayer = GigerSportDB.player.Find(GetorderDetailId);
-            GigerSportDB.order.Remove(deleteOrder);
-            GigerSportDB.orderDetail.Remove(deleteOrderDetail);
-            GigerSportDB.player.Remove(deletePlayer);
-            GigerSportDB.SaveChanges();
-            return RedirectToAction("DoneOrderItems");
-        }
+        //public ActionResult DeleteItem(int orderNumber)
+        //{
+        //    order deleteOrder = GigerSportDB.order.Find(orderNumber);
+        //    orderDetail deleteOrderDetail = GigerSportDB.orderDetail.Find(orderNumber);
+        //    var GetorderDetailId = GigerSportDB.orderDetail.Where((x) => x.orderNumber == orderNumber).Select((x) => x.orderDetailId).First();
+        //    player deletePlayer = GigerSportDB.player.Find(GetorderDetailId);
+        //    GigerSportDB.order.Remove(deleteOrder);
+        //    GigerSportDB.orderDetail.Remove(deleteOrderDetail);
+        //    GigerSportDB.player.Remove(deletePlayer);
+        //    GigerSportDB.SaveChanges();
+        //    return RedirectToAction("DoneOrderItems");
+        //}
 
         public ActionResult DeleteDetail(int orderDetailId)
         {
-            orderDetail deleteTarget = GigerSportDB.orderDetail.Find(orderDetailId);
-            player deletePlayer = GigerSportDB.player.Find(orderDetailId);
-            var GetorderNumber = GigerSportDB.orderDetail.Where((x) => x.orderDetailId == orderDetailId).Select((x) => x.orderNumber).First();
-            order deleteOrder = GigerSportDB.order.Find(GetorderNumber);
-            GigerSportDB.order.Remove(deleteOrder);
-            GigerSportDB.orderDetail.Remove(deleteTarget);
-            GigerSportDB.player.Remove(deletePlayer);
-            GigerSportDB.SaveChanges();
-            return RedirectToAction("DoneOrderDetail");
+            DeleteOrder deleteOrder = new DeleteOrder();
+            deleteOrder.DeleteTarget(orderDetailId);
+            return View();
         }
-
     }
 }

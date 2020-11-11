@@ -204,6 +204,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GigerSportRepository.cs" />
     <Compile Include="Services\CreateProductList.cs" />
+    <Compile Include="Services\DeleteOrder.cs" />
     <Compile Include="Services\GetOrderService.cs" />
     <Compile Include="Services\OrderInToDB.cs" />
     <Compile Include="Startup.cs" />
