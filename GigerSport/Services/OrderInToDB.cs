@@ -70,6 +70,10 @@ namespace GigerSport.Services
                 }
 
             }
+            if (Discount < 0 || Discount > 1)
+            {
+                Discount = 1;
+            }
             orderDetail AddOrderDetail = new orderDetail()
             {
                 orderDetailId = makeOrderDetailId + 1,

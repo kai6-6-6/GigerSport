@@ -23,8 +23,6 @@ namespace GigerSport.Controllers
         {
             OrderInToDB intoDB = new OrderInToDB();
             intoDB.InToDB(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
-
-
             return RedirectToAction("UnDoneOrderItem");
         }
         public ActionResult DoneOrderItems()
@@ -46,6 +44,13 @@ namespace GigerSport.Controllers
         {
             var OrderDetail = GetOrderservice.EditOrderDetail(orderNumber);
             return View(OrderDetail);
+        }
+        [HttpPost]
+        public ActionResult UnDoneOrderDetail(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord, int FrontWordSize, string BackWord, int BackWordSize, string Major, int Quantity, double Discount, string Img, int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize,int OrderDetailId)
+        {
+            SaveDetailChange SaveEdit = new SaveDetailChange();
+            SaveEdit.Save(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize, OrderDetailId);
+            return RedirectToAction("UnDoneOrderItem");
         }
         public ActionResult DeleteDetail(int orderDetailId)
         {

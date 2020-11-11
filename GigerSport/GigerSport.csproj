@@ -208,6 +208,7 @@
     <Compile Include="Services\DeleteOrder.cs" />
     <Compile Include="Services\GetOrderService.cs" />
     <Compile Include="Services\OrderInToDB.cs" />
+    <Compile Include="Services\SaveDetailChange.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

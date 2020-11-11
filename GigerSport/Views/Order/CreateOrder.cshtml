@@ -44,21 +44,22 @@
             <option value=@item.styleId>@item.styleName</option>
         }
     </select>
-    <input type="text" placeholder="姓名" class="" name="Name" required/>
-    <input type="text" placeholder="連絡電話" class="" name="Phone" required/>
-    <input type="text" placeholder="收件地址" class="" name="Address" required/>
+    <input type="text" placeholder="姓名" class="" name="Name" required />
+    <input type="text" placeholder="連絡電話" class="" name="Phone" required />
+    <input type="text" placeholder="收件地址" class="" name="Address" required />
     <input type="text" placeholder="信箱" class="" name="Email" />
     <input type="text" placeholder="統一編號" class="" name="Tex" />
     <input type="text" placeholder="學校" class="" name="Department" />
     <input type="text" placeholder="科系" class="" name="Major" />
     <input type="text" placeholder="正面內容" class="" name="FrontWord" />
-    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" required/>
+    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" required />
     <input type="text" placeholder="背面內容" class="" name="BackWord" />
-    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" required/>
-    <input type="text" placeholder="數量" class="" name="Quantity" required/>
+    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" required />
+    <input type="text" placeholder="數量" class="" name="Quantity" required />
     <input type="text" placeholder="折扣" class="" name="Discount" />
     <input type="text" placeholder="圖" class="" name="Img" />
     <button type="button" class="add_player">新增球員</button>
+    <button type="button" class="minus_player">減少球員</button>
     <input class="comfirm" value='新增' type='submit'>
     <div class="players"></div>
 }
@@ -87,6 +88,8 @@
                             </div>
                             `)
         });
-
+        $(".minus_player").last().click(function () {
+            $(".player").last().remove();
+        })
     </script>
 }

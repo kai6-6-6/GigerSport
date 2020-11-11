@@ -67,15 +67,15 @@
                     <th>隊長標記</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="players">
                 @foreach (var player in Model.detailModel.Players)
                 {
-                    <tr>
+                    <tr class="player">
                         <td>
-                            <input type="text" placeholder="球員號碼" class="" name="" disabled="true" value=@player.number>
+                            <input type="text" placeholder="球員號碼" class="" name="PlayerNumber" disabled="true" value=@player.number>
                         </td>
                         <td>
-                            <input type="text" placeholder="姓名" class="" name="" disabled="true" value=@player.playerName>
+                            <input type="text" placeholder="姓名" class="" name="PlayerName" disabled="true" value=@player.playerName>
                         </td>
                         <td>
                             <select name="PlayerSize" disabled="true">
@@ -106,14 +106,15 @@
             </tbody>
         </table>
     }
+    <button type="button" class="add_player" disabled="true">新增球員</button>
+    <button type="button" class="minus_player" disabled="true">減少球員</button>
     <a class="btn-group" href="~/Views/" data-toggle="modal" data-target="#finishModal">
         已完成訂單
     </a>
+    <button type="button" class="Edit">編輯</button>
+    <button class="KeepEdit" type="submit" disabled="true">保存 |</button>
+    <input name="OrderDetailId" display="none" value=@Model.detailModel.OrderDetailId />
 }
-
-<button type="button" class="Edit">編輯</button> |
-
-@Html.ActionLink("保存", "Edit", new { @class = "KeepEdit", disabled = "true" }) |
 
 <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
     刪除
@@ -149,8 +150,8 @@
 @section endJS{
     <script>
         let edit_btn = document.querySelector('.Edit');
-        let all = document.querySelectorAll('input,select');
         edit_btn.addEventListener('click', () => {
+            let all = document.querySelectorAll('input,select,.add_player,.minus_player,.KeepEdit');
             all.forEach(item => {
                 if (item.hasAttribute('disabled')) {
                     item.removeAttribute('disabled');
@@ -159,5 +160,36 @@
                 }
             })
         });
+    </script>
+    <script>
+        $(".add_player").click(function () {
+            $(".players").append(`
+                            <tr class="player">
+                        <td>
+                            <input type="text" placeholder="球員號碼" class="" name="PlayerNumber">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="姓名" class="" name="PlayerName">
+                        </td>
+                        <td>
+                            <select name="PlayerSize">
+                                <option value=null selected disabled hidden>尺寸</option>
+                                @foreach (var item in Model.createList.sizeList)
+                                {
+                                    <option value=@item.sizeId>@item.sizeName</option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select name="LeaderMark">
+                                <option value=false>無隊長標記</option>
+                                <option value=true>有隊長標記</option>
+                            </select>
+                        </td>
+                    </tr>`)
+        });
+        $(".minus_player").last().click(function () {
+            $(".player").last().remove();
+        })
     </script>
 }
