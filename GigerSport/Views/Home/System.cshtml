@@ -1,0 +1,88 @@
+﻿@model GigerSport.Models.CreateList
+
+@{
+    ViewBag.Title = "System";
+    int[] array = new int[] { Model.chinsesFontLists.Count(), Model.engilshFontLists.Count(), Model.fontColorLists.Count(), Model.numberFontLists.Count(), Model.sizeList.Count(), Model.styleLists.Count() };
+    int max = array.Max();
+}
+
+<h2>產品選項設定</h2>
+
+
+<table class="table">
+    <caption>Monthly savings</caption>
+    <tr>
+        <th><button type="button" class="add_chinsesFont">新增</button> | <button type="button" class="del_chinsesFont">刪除</button></th>
+        <th><button type="button" class="add_engilshFont">新增</button> | <button type="button" class="del_engilshFont">刪除</button></th>
+        <th><button type="button" class="add_fontColor">新增</button> | <button type="button" class="del_fontColor">刪除</button></th>
+        <th><button type="button" class="add_numberFont">新增</button> | <button type="button" class="del_numberFont">刪除</button></th>
+        <th><button type="button" class="add_size">新增</button> | <button type="button" class="del_size">刪除</button></th>
+        <th><button type="button" class="add_style">新增</button> | <button type="button" class="del_style">刪除</button></th>
+    </tr>
+    <tr>
+        <td>中文字體</td>
+        <td>英文字體</td>
+        <td>文字顏色</td>
+        <td>數字字體</td>
+        <td>尺寸大小</td>
+        <td>樣式</td>
+    </tr>
+
+    @for (var i = 0; i < max; i++)
+    {
+<tr>
+    @try {<td class="chinsesFont"> <input type="text" placeholder="中文字型" class="chinsesFontInfo" name="chinsesFont" required value=@Model.chinsesFontLists[i].chineseFontName></td>} catch {<td></td>}
+    @try {<td class="engilshFont"><input type="text" placeholder="英文字型" class="engilshFontInfo" name="engilshFont" required value=@Model.engilshFontLists[i].engilshFontName></td>} catch {<td></td> }
+    @try {<td class="fontColor"><input type="text" placeholder="字體顏色" class="fontColorInfo" name="fontColor" required value=@Model.fontColorLists[i].fontColorName></td>} catch {<td></td> }
+    @try {<td class="numberFont"><input type="text" placeholder="數字字型" class="numberFontInfo" name="numberFont" required value=@Model.numberFontLists[i].numberFontName></td>} catch {<td></td> }
+    @try {<td class="size"><input type="text" placeholder="尺寸" class="sizeInfo" name="size" required value=@Model.sizeList[i].sizeName></td>} catch {<td></td> }
+    @try {<td class="style"><input type="text" placeholder="樣式" class="styleInfo" name="style" required value=@Model.styleLists[i].styleName></td>} catch {<td></td> }
+    <td></td>
+</tr>
+    }
+
+</table>
+
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+@section endJS{ 
+    <script>
+        $(".add_chinsesFont").click(function () {
+            $(".chinsesFont").append(` <input type="text" placeholder="中文字型" class="chinsesFontInfo" name="chinsesFont" required>`):
+        });
+        $(".del_chinsesFont").click(function () {
+            $(".chinsesFontInfo").last().remove();
+        }):
+        $(".add_engilshFont").click(function () {
+            $(".engilshFont").append(` <input type="text" placeholder="英文字型" class="engilshFontInfo" name="engilshFont" required>`):
+        });
+        $(".del_engilshFont").click(function () {
+            $(".engilshFontInfo").last().remove();
+        }):
+        $(".add_fontColor").click(function () {
+            $(".fontColor").append(` <input type="text" placeholder="字體顏色" class="fontColorInfo" name="fontColor" required>`):
+        });
+        $(".del_fontColor").click(function () {
+            $(".fontColorInfo").last().remove();
+        }):
+        $(".add_numberFont").click(function () {
+            $(".numberFont").append(` <input type="text" placeholder="數字字型" class="numberFontInfo" name="numberFont" required>`):
+        });
+        $(".del_numberFont").click(function () {
+            $(".numberFontInfo").last().remove();
+        }):
+        $(".add_size").click(function () {
+            $(".size").append(` <input type="text" placeholder="尺寸" class="sizeInfo" name="size" required>`):
+        });
+        $(".del_size").click(function () {
+            $(".sizeInfo").last().remove();
+        }):
+        $(".add_style").click(function () {
+            $(".style").append(` <input type="text" placeholder="樣式" class="styleInfo" name="style" required>`):
+        });
+        $(".del_style").click(function () {
+            $(".styleInfo").last().remove();
+        }):
+    </script>
+}

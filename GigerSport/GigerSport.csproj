@@ -275,6 +275,7 @@
     <Content Include="Views\Order\UnDoneOrderDetail.cshtml" />
     <Content Include="Views\Order\DoneOrderDetail.cshtml" />
     <Content Include="Views\Customer\NewOrder.cshtml" />
+    <Content Include="Views\Home\System.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

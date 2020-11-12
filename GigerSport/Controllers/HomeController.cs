@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GigerSport.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,11 +21,11 @@ namespace GigerSport.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult System()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            CreateProductList GetAllList = new CreateProductList();
+            GetAllList.GetProductList();
+            return View(GetAllList);
         }
     }
 }
