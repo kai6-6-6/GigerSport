@@ -31,6 +31,7 @@ namespace GigerSport.Services
                 Discount = 1;
             }
             var FindOrderDetail = context.orderDetail.Where((x) => x.orderDetailId == OrderDetailId).First();
+            var StyleCost = context.style.Where((x) => x.styleId == Style).Select((x) => x.price).First();
             FindOrderDetail.address = Address;
             FindOrderDetail.texId = Tex;
             FindOrderDetail.frontWord = FrontWord;
@@ -45,6 +46,7 @@ namespace GigerSport.Services
             FindOrderDetail.fontColorId = FontColor;
             FindOrderDetail.numberFontId = NumberFontWord;
             FindOrderDetail.styleId = Style;
+            FindOrderDetail.amount = Convert.ToDecimal(StyleCost * Discount * Quantity);
             Change_orderDetail.Update(FindOrderDetail);
 
             if (PlayerName.Length > 0)
