@@ -29,6 +29,7 @@ namespace GigerSport.DBModel
         public virtual DbSet<style> style { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<undoneOrder> undoneOrder { get; set; }
+        public virtual DbSet<undonePlayer> undonePlayer { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -72,11 +73,6 @@ namespace GigerSport.DBModel
                 .WithRequired(e => e.order)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<order>()
-                .HasMany(e => e.undoneOrder)
-                .WithRequired(e => e.order)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<orderDetail>()
                 .Property(e => e.amount)
                 .HasPrecision(19, 4);
@@ -110,6 +106,22 @@ namespace GigerSport.DBModel
                 .HasMany(e => e.orderDetail)
                 .WithRequired(e => e.style)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<undoneOrder>()
+                .Property(e => e.phone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<undoneOrder>()
+                .HasMany(e => e.undonePlayer)
+                .WithRequired(e => e.undoneOrder)
+                .HasForeignKey(e => e.undoneorderDetailId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<undonePlayer>()
+                .Property(e => e.number)
+                .IsFixedLength()
+                .IsUnicode(false);
         }
     }
 }

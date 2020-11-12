@@ -193,6 +193,7 @@
     <Compile Include="DBModel\style.cs" />
     <Compile Include="DBModel\sysdiagrams.cs" />
     <Compile Include="DBModel\undoneOrder.cs" />
+    <Compile Include="DBModel\undonePlayer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

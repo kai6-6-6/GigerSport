@@ -13,7 +13,6 @@ namespace GigerSport.DBModel
         public order()
         {
             orderDetail = new HashSet<orderDetail>();
-            undoneOrder = new HashSet<undoneOrder>();
         }
 
         [Key]
@@ -31,8 +30,5 @@ namespace GigerSport.DBModel
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<orderDetail> orderDetail { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<undoneOrder> undoneOrder { get; set; }
     }
 }
