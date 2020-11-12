@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Models\orderItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GigerSportRepository.cs" />
+    <Compile Include="Services\Customer_AddOrderService.cs" />
     <Compile Include="Services\CreateProductList.cs" />
     <Compile Include="Services\DeleteOrder.cs" />
     <Compile Include="Services\GetOrderService.cs" />
@@ -272,6 +274,7 @@
     <Content Include="Views\Order\CreateOrder.cshtml" />
     <Content Include="Views\Order\UnDoneOrderDetail.cshtml" />
     <Content Include="Views\Order\DoneOrderDetail.cshtml" />
+    <Content Include="Views\Customer\NewOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

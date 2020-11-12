@@ -1,10 +1,10 @@
 ﻿@model GigerSport.Models.CreateList
 
 @{
-    ViewBag.Title = "CreateOrder";
+    ViewBag.Title = "NewOrder";
 }
 
-<h2>CreateOrder</h2>
+<h2>NewOrder</h2>
 
 
 @using (Html.BeginForm())
@@ -21,8 +21,6 @@
     <input type="text" placeholder="背面內容" class="" name="BackWord" />
     <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" required />
     <input type="text" placeholder="數量" class="" name="Quantity" required />
-    <input type="text" placeholder="折扣" class="" name="Discount" />
-    <input type="text" placeholder="圖" class="" name="Img" />
     <select name="ChineseFontWord">
         <option value=null selected disabled hidden>中文字體</option>
         @foreach (var item in Model.chinsesFontLists)
