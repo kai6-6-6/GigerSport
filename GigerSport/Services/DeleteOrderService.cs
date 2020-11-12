@@ -7,7 +7,7 @@ using System.Web;
 
 namespace GigerSport.Services
 {
-    public class DeleteOrder
+    public class DeleteOrderService
     {
         private GigerSportDB context = new GigerSportDB();
         public void DeleteTarget(int orderDetailId)

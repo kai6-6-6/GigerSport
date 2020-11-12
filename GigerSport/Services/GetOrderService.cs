@@ -104,7 +104,7 @@ namespace GigerSport.Services
 
         public EditDetaiModel EditOrderDetail(int orderNumber)
         {
-            CreateProductList GetProductList = new CreateProductList();
+            CreateProductListService GetProductList = new CreateProductListService();
             EditDetaiModel EditDetail = new EditDetaiModel();
             EditDetail.createList = GetProductList.GetProductList();
             EditDetail.detailModel = UnDoneOrderDetail(orderNumber);

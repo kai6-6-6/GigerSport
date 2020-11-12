@@ -8,7 +8,7 @@ using System.Web;
 
 namespace GigerSport.Services
 {
-    public class CreateProductList
+    public class CreateProductListService
     {
         private GigerSportDB context = new GigerSportDB();
         private CreateList ProductList = new CreateList();

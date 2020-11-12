@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace GigerSport.Services
 {
-    public class OrderInToDB
+    public class OrderInToDBService
     {
         private GigerSportDB context = new GigerSportDB();
         public void InToDB(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord, int FrontWordSize, string BackWord, int BackWordSize, string Major, int Quantity, double Discount, string Img, int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize)

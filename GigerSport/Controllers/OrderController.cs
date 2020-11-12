@@ -13,7 +13,7 @@ namespace GigerSport.Controllers
         private GetOrderService GetOrderservice = new GetOrderService();
         public ActionResult CreateOrder()
         {
-            CreateProductList _GetProduct = new CreateProductList();
+            CreateProductListService _GetProduct = new CreateProductListService();
             var GetProduct = _GetProduct.GetProductList();
             return View(GetProduct);
         }
@@ -21,7 +21,7 @@ namespace GigerSport.Controllers
         [HttpPost]
         public ActionResult CreateOrder(string Name,string Phone,string Address,string Email,string Tex,string Department, string FrontWord,int FrontWordSize, string BackWord,int BackWordSize, string Major, int Quantity,double Discount, string Img,int ChineseFontWord,int EngilshFontWord,int FontColor,int NumberFontWord,int Style, string[] PlayerNumber,string[] PlayerName,bool[] LeaderMark,int[] PlayerSize)
         {
-            OrderInToDB intoDB = new OrderInToDB();
+            OrderInToDBService intoDB = new OrderInToDBService();
             intoDB.InToDB(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
             return RedirectToAction("UnDoneOrderItem");
         }
@@ -48,13 +48,13 @@ namespace GigerSport.Controllers
         [HttpPost]
         public ActionResult UnDoneOrderDetail(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord, int FrontWordSize, string BackWord, int BackWordSize, string Major, int Quantity, double Discount, string Img, int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize,int OrderDetailId)
         {
-            SaveDetailChange SaveEdit = new SaveDetailChange();
+            SaveDetailChangeService SaveEdit = new SaveDetailChangeService();
             SaveEdit.Save(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize, OrderDetailId);
             return RedirectToAction("UnDoneOrderItem");
         }
         public ActionResult DeleteDetail(int orderDetailId)
         {
-            DeleteOrder deleteOrder = new DeleteOrder();
+            DeleteOrderService deleteOrder = new DeleteOrderService();
             deleteOrder.DeleteTarget(orderDetailId);
             return RedirectToAction("Index", "Home");
         }

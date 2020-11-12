@@ -12,7 +12,7 @@ namespace GigerSport.Controllers
         // GET: Customer
         public ActionResult NewOrder()
         {
-            CreateProductList _GetProduct = new CreateProductList();
+            CreateProductListService _GetProduct = new CreateProductListService();
             var GetProduct = _GetProduct.GetProductList();
             return View(GetProduct);
         }

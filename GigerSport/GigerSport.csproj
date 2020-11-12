@@ -206,11 +206,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GigerSportRepository.cs" />
     <Compile Include="Services\Customer_AddOrderService.cs" />
-    <Compile Include="Services\CreateProductList.cs" />
-    <Compile Include="Services\DeleteOrder.cs" />
+    <Compile Include="Services\CreateProductListService.cs" />
+    <Compile Include="Services\DeleteOrderService.cs" />
     <Compile Include="Services\GetOrderService.cs" />
-    <Compile Include="Services\OrderInToDB.cs" />
-    <Compile Include="Services\SaveDetailChange.cs" />
+    <Compile Include="Services\OrderInToDBService.cs" />
+    <Compile Include="Services\SaveDetailChangeService.cs" />
+    <Compile Include="Services\SaveSystemService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

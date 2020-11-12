@@ -23,9 +23,16 @@ namespace GigerSport.Controllers
 
         public ActionResult System()
         {
-            CreateProductList GetAllList = new CreateProductList();
-            GetAllList.GetProductList();
-            return View(GetAllList);
+            CreateProductListService GetAllList = new CreateProductListService();
+            var ProductList=GetAllList.GetProductList();
+            return View(ProductList);
+        }
+        [HttpPost]
+        public ActionResult System(string[] chinsesFont,string[] engilshFont,string[] fontColor,string[] numberFont,string[] size,string[] style)
+        {
+            SaveSystemService Save = new SaveSystemService();
+            Save.SaveSystem(chinsesFont, engilshFont, fontColor, numberFont, size, style);
+            return RedirectToAction("System");
         }
     }
 }
