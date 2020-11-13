@@ -49,7 +49,7 @@ namespace GigerSport.Services
             FindOrderDetail.amount = Convert.ToDecimal(StyleCost * Discount * Quantity);
             Change_orderDetail.Update(FindOrderDetail);
 
-            if (PlayerName.Length > 0)
+            if (PlayerName != null)
             {
                 var GetPlayer = context.player.Where((x) => x.orderDetailId == OrderDetailId);
                 foreach (var item in GetPlayer) { Change_player.Delete(item); }

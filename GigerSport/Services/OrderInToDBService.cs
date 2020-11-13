@@ -51,7 +51,7 @@ namespace GigerSport.Services
             };
             Ride_order.Create(AddOrder);
             bool HasplayerList = false;
-            if (PlayerName.Length > 0)
+            if (PlayerName != null)
             {
                 var makePlayerId = context.player.Select((x) => x.playerId).Max();
                 HasplayerList = true;

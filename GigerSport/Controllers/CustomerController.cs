@@ -17,10 +17,10 @@ namespace GigerSport.Controllers
             return View(GetProduct);
         }
         [HttpPost]
-        public ActionResult NewOrder(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord, int FrontWordSize, string BackWord, int BackWordSize, string Major, int Quantity,int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize)
+        public ActionResult NewOrder(string Name, string Phone, string Email, string Department, string Major, string Address, string Tex, int Style, string FrontWord, string BackWord, int ChineseFont, int EngilshFont, int NumberFont, int FontColor, int Quantity, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize)
         {
             Customer_AddOrderService uncheck = new Customer_AddOrderService();
-            uncheck.ImToUnChexkDB(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
+            uncheck.ImToUnChexkDB(Name, Phone, Email, Department, Major, Address, Tex, Style, FrontWord, BackWord, ChineseFont, EngilshFont, NumberFont, FontColor, Quantity, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
             return View();
         }
     }
