@@ -14,12 +14,18 @@ namespace GigerSport.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult CustomerHandItem()
         {
-            ViewBag.Message = "Your application description page.";
+            CustomerHandOrderService CustomerHand = new CustomerHandOrderService();
+            var OrderItem = CustomerHand.CustomerOrderItem();
+            return View(OrderItem);
+        }
+        public ActionResult CustomerHandDetail(int undoneOrderId)
+        {
 
             return View();
         }
+
 
         public ActionResult System()
         {

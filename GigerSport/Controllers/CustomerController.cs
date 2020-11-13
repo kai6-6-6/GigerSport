@@ -21,7 +21,7 @@ namespace GigerSport.Controllers
         {
             Customer_AddOrderService uncheck = new Customer_AddOrderService();
             uncheck.ImToUnChexkDB(Name, Phone, Email, Department, Major, Address, Tex, Style, FrontWord, BackWord, ChineseFont, EngilshFont, NumberFont, FontColor, Quantity, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
-            return View();
+            return RedirectToAction("NewOrder");
         }
     }
 }

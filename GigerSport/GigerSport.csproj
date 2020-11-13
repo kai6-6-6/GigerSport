@@ -199,6 +199,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateModel.cs" />
+    <Compile Include="Models\CustomerHandOrderModel.cs" />
     <Compile Include="Models\EditDetaiModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Models\orderItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GigerSportRepository.cs" />
+    <Compile Include="Services\CustomerHandOrderService.cs" />
     <Compile Include="Services\Customer_AddOrderService.cs" />
     <Compile Include="Services\CreateProductListService.cs" />
     <Compile Include="Services\DeleteOrderService.cs" />
@@ -248,8 +250,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
