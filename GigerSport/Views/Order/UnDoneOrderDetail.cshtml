@@ -87,18 +87,18 @@
                             </select>
                         </td>
                         <td>
-                            <select name="LeaderMark" disabled="true" required>
-
+                            <select name="LeaderMark" required>
                                 @if (player.leader == true)
                                 {
                                     <option value=@player.leader>有隊長標記</option>
-                                    <option value=false>無隊長標記</option>
                                 }
                                 else
                                 {
                                     <option value=@player.leader>無隊長標記</option>
-                                    <option value=true>有隊長標記</option>
                                 }
+
+                                <option value=false>無隊長標記</option>
+                                <option value=true>有隊長標記</option>
                             </select>
                         </td>
                     </tr>
@@ -109,7 +109,7 @@
     <button type="button" class="add_player" disabled="true">新增球員</button>
     <button type="button" class="minus_player" disabled="true">減少球員</button>
 
-    <input name="   " disabled="true" value=@Model.detailModel.OrderDetailId />
+    <input name="OrderDetailId" disabled="true" value=@Model.detailModel.OrderDetailId />
     <a class="btn-group" href="~/Views/" data-toggle="modal" data-target="#finishModal">
         已完成訂單
     </a>
