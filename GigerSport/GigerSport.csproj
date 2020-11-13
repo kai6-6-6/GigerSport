@@ -174,7 +174,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\testController.cs" />
     <Compile Include="DBModel\AspNetRoles.cs" />
     <Compile Include="DBModel\AspNetUserClaims.cs" />
     <Compile Include="DBModel\AspNetUserLogins.cs" />
@@ -278,13 +277,14 @@
     <Content Include="Views\Order\DoneOrderDetail.cshtml" />
     <Content Include="Views\Customer\NewOrder.cshtml" />
     <Content Include="Views\Home\System.cshtml" />
+    <Content Include="Views\Home\CustomerHandItem.cshtml" />
+    <Content Include="Views\Home\CustomerHandDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\css\" />
     <Folder Include="Assets\img\" />
     <Folder Include="Assets\js\" />
-    <Folder Include="Views\test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,55 +1,56 @@
 ﻿@model GigerSport.Models.EditDetaiModel
 
 @{
-    ViewBag.Title = "UnDoneOrderDetail";
+    ViewBag.Title = "CustomerHandDetail";
 }
-<h2>未完成訂單細節</h2>
+
+<h2>未登錄訂單細節</h2>
 
 @using (Html.BeginForm())
 {
-    <input type="text" placeholder="姓名" class="" name="Name" disabled="true" required value=@Model.detailModel.Customer>
-    <input type="text" placeholder="連絡電話" class="" name="Phone" disabled="true" required value=@Model.detailModel.Phone>
-    <input type="text" placeholder="收件地址" class="" name="Address" disabled="true" required value=@Model.detailModel.Address>
-    <input type="text" placeholder="信箱" class="" name="Email" disabled="true" value=@Model.detailModel.Email>
-    <input type="text" placeholder="統一編號" class="" name="Tex" disabled="true" value=@Model.detailModel.TexId>
-    <input type="text" placeholder="學校" class="" name="Department" disabled="true" value=@Model.detailModel.Department>
-    <input type="text" placeholder="科系" class="" name="Major" disabled="true" value=@Model.detailModel.Major>
-    <input type="text" placeholder="正面內容" class="" name="FrontWord" disabled="true" value=@Model.detailModel.FrontWord>
-    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" disabled="true" required value=@Model.detailModel.FrontWordSize>
-    <input type="text" placeholder="背面內容" class="" name="BackWord" disabled="true" value=@Model.detailModel.BackWord>
-    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" disabled="true" required value=@Model.detailModel.BackWordSize>
-    <input type="text" placeholder="數量" class="" name="Quantity" disabled="true" required value=@Model.detailModel.Quantity>
-    <input type="text" placeholder="折扣" class="" name="Discount" disabled="true" value=@Model.detailModel.Discount>
-    <input type="text" placeholder="圖" class="" name="Img" disabled="true" value=@Model.detailModel.Img>
-    <select name="ChineseFontWord" disabled="true" required>
+    <input type="text" placeholder="姓名" class="" name="Name" required value=@Model.detailModel.Customer>
+    <input type="text" placeholder="連絡電話" class="" name="Phone" required value=@Model.detailModel.Phone>
+    <input type="text" placeholder="收件地址" class="" name="Address" required value=@Model.detailModel.Address>
+    <input type="text" placeholder="信箱" class="" name="Email" value=@Model.detailModel.Email>
+    <input type="text" placeholder="統一編號" class="" name="Tex" value=@Model.detailModel.TexId>
+    <input type="text" placeholder="學校" class="" name="Department" value=@Model.detailModel.Department>
+    <input type="text" placeholder="科系" class="" name="Major" value=@Model.detailModel.Major>
+    <input type="text" placeholder="正面內容" class="" name="FrontWord" value=@Model.detailModel.FrontWord>
+    <input type="text" placeholder="正面字型大小" class="" name="FrontWordSize" required value=@Model.detailModel.FrontWordSize>
+    <input type="text" placeholder="背面內容" class="" name="BackWord" value=@Model.detailModel.BackWord>
+    <input type="text" placeholder="背面字型大小" class="" name="BackWordSize" required value=@Model.detailModel.BackWordSize>
+    <input type="text" placeholder="數量" class="" name="Quantity" required value=@Model.detailModel.Quantity>
+    <input type="text" placeholder="折扣" class="" name="Discount" value=1 required>
+    <input type="text" placeholder="圖" class="" name="Img" value=@Model.detailModel.Img>
+    <select name="ChineseFontWord" required>
         <option value=@Model.detailModel.ChineseFontId>@Model.detailModel.ChineseFont</option>
         @foreach (var item in Model.createList.chinsesFontLists)
         {
             <option value=@item.chineseFontId>@item.chineseFontName</option>
         }
     </select>
-    <select name="EngilshFontWord" disabled="true" required>
+    <select name="EngilshFontWord" required>
         <option value=@Model.detailModel.EngilshFontId>@Model.detailModel.EngilshFont</option>
         @foreach (var item in Model.createList.engilshFontLists)
         {
             <option value=@item.engilshFontId>@item.engilshFontName</option>
         }
     </select>
-    <select name="FontColor" disabled="true" required>
+    <select name="FontColor" required>
         <option value=@Model.detailModel.FontColorId>@Model.detailModel.FontColor</option>
         @foreach (var item in Model.createList.fontColorLists)
         {
             <option value=@item.fontColorId>@item.fontColorName</option>
         }
     </select>
-    <select name="NumberFontWord" disabled="true" required>
+    <select name="NumberFontWord" required>
         <option value=@Model.detailModel.NumberFontId>@Model.detailModel.NumberFont</option>
         @foreach (var item in Model.createList.numberFontLists)
         {
             <option value=@item.numberFontId>@item.numberFontName</option>
         }
     </select>
-    <select name="Style" disabled="true" required>
+    <select name="Style" required>
         <option value=@Model.detailModel.StyleId>@Model.detailModel.Style</option>
         @foreach (var item in Model.createList.styleLists)
         {
@@ -72,13 +73,13 @@
                 {
                     <tr class="player">
                         <td>
-                            <input type="text" placeholder="球員號碼" class="" name="PlayerNumber" disabled="true" value=@player.number required>
+                            <input type="text" placeholder="球員號碼" class="" name="PlayerNumber" value=@player.number required>
                         </td>
                         <td>
-                            <input type="text" placeholder="姓名" class="" name="PlayerName" disabled="true" value=@player.playerName required>
+                            <input type="text" placeholder="姓名" class="" name="PlayerName" value=@player.playerName required>
                         </td>
                         <td>
-                            <select name="PlayerSize" disabled="true" required>
+                            <select name="PlayerSize" required>
                                 <option value=@player.sizeId>@player.size</option>
                                 @foreach (var item in Model.createList.sizeList)
                                 {
@@ -87,18 +88,18 @@
                             </select>
                         </td>
                         <td>
-                            <select name="LeaderMark" disabled="true" required>
-
+                            <select name="LeaderMark" required>
                                 @if (player.leader == true)
                                 {
                                     <option value=@player.leader>有隊長標記</option>
-                                    <option value=false>無隊長標記</option>
                                 }
                                 else
                                 {
                                     <option value=@player.leader>無隊長標記</option>
-                                    <option value=true>有隊長標記</option>
                                 }
+
+                                <option value=false>無隊長標記</option>
+                                <option value=true>有隊長標記</option>
                             </select>
                         </td>
                     </tr>
@@ -106,15 +107,10 @@
             </tbody>
         </table>
     }
-    <button type="button" class="add_player" disabled="true">新增球員</button>
-    <button type="button" class="minus_player" disabled="true">減少球員</button>
-
-    <input name="   " disabled="true" value=@Model.detailModel.OrderDetailId />
-    <a class="btn-group" href="~/Views/" data-toggle="modal" data-target="#finishModal">
-        已完成訂單
-    </a>
-    <button type="button" class="Edit">編輯</button>
-    <button class="KeepEdit" type="submit" disabled="true">保存</button>
+    <button type="button" class="add_player">新增球員</button>
+    <button type="button" class="minus_player">減少球員</button>
+    <input name="UndoneOrderId" display="none" value=@Model.detailModel.OrderDetailId />
+    <button class="KeepEdit" type="submit">確認新增訂單</button>
 }
 
 <a class="btn-danger" href="~/Views/" data-toggle="modal" data-target="#deleteModal">
@@ -129,40 +125,14 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                @Html.ActionLink("刪除", "DeleteDetail", new { orderDetailId = Model.detailModel.OrderDetailId })
+                @Html.ActionLink("刪除", "DeleteCustomerHandOrder", new { undoneOrderId = Model.detailModel.OrderDetailId })
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                將移至歷史訂單，且無法恢復成未完成訂單!
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                @Html.ActionLink("確定", "FinishDetail", new { orderDetailId = Model.detailModel.OrderDetailId })
-            </div>
-        </div>
-    </div>
-</div>
-@section endJS{
-    <script>
-        let edit_btn = document.querySelector('.Edit');
-        edit_btn.addEventListener('click', () => {
-            let all = document.querySelectorAll('input,select,.add_player,.minus_player,.KeepEdit');
-            all.forEach(item => {
-                if (item.hasAttribute('disabled')) {
-                    item.removeAttribute('disabled');
-                } else {
-                    item.setAttribute('disabled', 'true')
-                }
-            })
-        });
-    </script>
-    <script>
+
+<script>
+        <script>
         $(".add_player").click(function () {
             $(".players").append(`
                             <tr class="player">
@@ -192,5 +162,5 @@
         $(".minus_player").click(function () {
             $(".player").last().remove();
         })
-    </script>
-}
+</script>
+</script>

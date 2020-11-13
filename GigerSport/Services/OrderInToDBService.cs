@@ -18,7 +18,8 @@ namespace GigerSport.Services
             GigerSportRepository<orderDetail> Ride_orderDetail = new GigerSportRepository<orderDetail>(context);
             GigerSportRepository<player> Ride_player = new GigerSportRepository<player>(context);
             var makeCustomerId = context.customer.Select((x) => x.customerId).Max();
-            var makeOrderDetailId = context.orderDetail.Select((x) => x.orderDetailId).Max();
+            int makeOrderDetailId;
+            try { makeOrderDetailId= context.orderDetail.Select((x) => x.orderDetailId).Max(); } catch { makeOrderDetailId = 1; }
             var FindCustomer = context.customer.FirstOrDefault((x) => x.customerName == Name);
             int newCustomerId;
             if (FindCustomer != null)
@@ -53,7 +54,9 @@ namespace GigerSport.Services
             bool HasplayerList = false;
             if (PlayerName != null)
             {
-                var makePlayerId = context.player.Select((x) => x.playerId).Max();
+
+                int makePlayerId;
+                try { makePlayerId = context.player.Select((x) => x.playerId).Max(); } catch { makePlayerId =1; }
                 HasplayerList = true;
                 for (var i = 0; i < PlayerName.Length; i++)
                 {
@@ -70,10 +73,8 @@ namespace GigerSport.Services
                 }
 
             }
-            if (Discount < 0 || Discount > 1)
-            {
-                Discount = 1;
-            }
+            try { if (Discount <= 0 || Discount > 1) { Discount = 1; } } catch { Discount = 1; }
+            
             orderDetail AddOrderDetail = new orderDetail()
             {
                 orderDetailId = makeOrderDetailId + 1,

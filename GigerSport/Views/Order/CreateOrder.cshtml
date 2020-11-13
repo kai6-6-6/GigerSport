@@ -4,7 +4,7 @@
     ViewBag.Title = "CreateOrder";
 }
 
-<h2>CreateOrder</h2>
+<h2>新增訂單</h2>
 
 
 @using (Html.BeginForm())
@@ -23,14 +23,14 @@
     <input type="text" placeholder="數量" class="" name="Quantity" required />
     <input type="text" placeholder="折扣" class="" name="Discount" />
     <input type="text" placeholder="圖" class="" name="Img" />
-    <select name="ChineseFontWord">
+    <select name="ChineseFontWord" required>
         <option value=null selected disabled hidden>中文字體</option>
         @foreach (var item in Model.chinsesFontLists)
         {
             <option value=@item.chineseFontId>@item.chineseFontName</option>
         }
     </select>
-    <select name="EngilshFontWord">
+    <select name="EngilshFontWord" required>
         <option value=null selected disabled hidden>英文字體</option>
         @foreach (var item in Model.engilshFontLists)
         {
@@ -44,7 +44,7 @@
             <option value=@item.fontColorId>@item.fontColorName</option>
         }
     </select>
-    <select name="NumberFontWord">
+    <select name="NumberFontWord" required>
         <option value=null selected disabled hidden>數字字體</option>
         @foreach (var item in Model.numberFontLists)
         {

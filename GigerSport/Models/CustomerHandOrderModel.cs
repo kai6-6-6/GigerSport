@@ -10,5 +10,6 @@ namespace GigerSport.Models
         public string customerName { get; set;}
         public int quantity { get; set; }
         public string style { get; set; }
+        public int undoneOrderId { get; set; }
     }
 }

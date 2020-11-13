@@ -48,7 +48,7 @@ namespace GigerSport.Services
             FindOrderDetail.styleId = Style;
             FindOrderDetail.amount = Convert.ToDecimal(StyleCost * Discount * Quantity);
             Change_orderDetail.Update(FindOrderDetail);
-
+            player AddPlayer = new player();
             if (PlayerName != null)
             {
                 var GetPlayer = context.player.Where((x) => x.orderDetailId == OrderDetailId);
@@ -56,15 +56,12 @@ namespace GigerSport.Services
                 var makePlayerId = context.player.Select((x) => x.playerId).Max();
                 for (var i = 0; i < PlayerName.Length; i++)
                 {
-                    player AddPlayer = new player()
-                    {
-                        playerId = makePlayerId + i + 1,
-                        playerName = PlayerName[i],
-                        number = PlayerNumber[i],
-                        leader = LeaderMark[i],
-                        orderDetailId = OrderDetailId,
-                        size = PlayerSize[i]
-                    };
+                    AddPlayer.playerId = makePlayerId + i + 1;
+                    AddPlayer.playerName = PlayerName[i];
+                    AddPlayer.number = PlayerNumber[i];
+                    AddPlayer.leader = LeaderMark[i];
+                    AddPlayer.orderDetailId = OrderDetailId;
+                    AddPlayer.size = PlayerSize[i];
                     Change_player.Create(AddPlayer);
                 }
             }

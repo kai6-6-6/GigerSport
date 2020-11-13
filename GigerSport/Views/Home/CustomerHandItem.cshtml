@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GigerSport.Models.CustomerHandOrderModel>
+
+@{
+    ViewBag.Title = "CustomerHandItem";
+}
+
+<h2>未登錄訂單目錄</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.customerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.style)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.customerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.style)
+        </td>
+        <td>
+            @Html.ActionLink("明細", "CustomerHandDetail", new { undoneOrderId = item.undoneOrderId })
+        </td>
+    </tr>
+}
+
+
+</table>

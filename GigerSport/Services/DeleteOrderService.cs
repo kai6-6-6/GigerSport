@@ -27,5 +27,18 @@ namespace GigerSport.Services
             Del_order.Delete(FindOrder);
             context.SaveChanges();
         }
+        public void DeleteUndoneOrder(int undoneOrderId)
+        {
+            GigerSportRepository<undoneOrder> Del_undoneOrder = new GigerSportRepository<undoneOrder>(context);
+            GigerSportRepository<undonePlayer> Del_undonePlayer = new GigerSportRepository<undonePlayer>(context);
+            var FindUndoneOrder = context.undoneOrder.Where((x) => x.undoneOrderId == undoneOrderId).First();
+            var FindPlayers = context.undonePlayer.Where((x) => x.undoneorderDetailId == undoneOrderId);
+            foreach(var item in FindPlayers)
+            {
+                Del_undonePlayer.Delete(item);
+            }
+            Del_undoneOrder.Delete(FindUndoneOrder);
+            context.SaveChanges();
+        }
     }
 }

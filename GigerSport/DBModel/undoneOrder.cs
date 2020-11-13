@@ -52,13 +52,13 @@ namespace GigerSport.DBModel
         [StringLength(50)]
         public string backWord { get; set; }
 
-        public int? chineseFontId { get; set; }
+        public int chineseFontId { get; set; }
 
-        public int? englishFontId { get; set; }
+        public int englishFontId { get; set; }
 
-        public int? numberFontId { get; set; }
+        public int numberFontId { get; set; }
 
-        public int? fontColorId { get; set; }
+        public int fontColorId { get; set; }
 
         public int quantity { get; set; }
 

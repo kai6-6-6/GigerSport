@@ -22,11 +22,25 @@ namespace GigerSport.Controllers
         }
         public ActionResult CustomerHandDetail(int undoneOrderId)
         {
-
-            return View();
+            CustomerHandOrderService GetCustoerOrderDetail = new CustomerHandOrderService();
+            var GetDetail = GetCustoerOrderDetail.CompleteOrder(undoneOrderId);
+            return View(GetDetail);
         }
-
-
+        [HttpPost]
+        public ActionResult CustomerHandDetail(string Name, string Phone, string Address, string Email, string Tex, string Department, string FrontWord, int FrontWordSize, string BackWord, int BackWordSize, string Major, int Quantity, double Discount, string Img, int ChineseFontWord, int EngilshFontWord, int FontColor, int NumberFontWord, int Style, string[] PlayerNumber, string[] PlayerName, bool[] LeaderMark, int[] PlayerSize,int UndoneOrderId)
+        {
+            OrderInToDBService intoDB = new OrderInToDBService();
+            intoDB.InToDB(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
+            DeleteOrderService Delete = new DeleteOrderService();
+            Delete.DeleteUndoneOrder(UndoneOrderId);
+            return RedirectToAction("CustomerHandItem");
+        }
+        public ActionResult DeleteCustomerHandOrder(int undoneOrderId)
+        {
+            DeleteOrderService Delete = new DeleteOrderService();
+            Delete.DeleteUndoneOrder(undoneOrderId);
+            return RedirectToAction("CustomerHandItem");
+        }
         public ActionResult System()
         {
             CreateProductListService GetAllList = new CreateProductListService();

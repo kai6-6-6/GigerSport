@@ -61,11 +61,10 @@ namespace GigerSport.Controllers
         public ActionResult FinishDetail(int orderDetailId)
         {
             GigerSportDB context = new GigerSportDB();
-            var GetOrder = context.orderDetail.Where((x) => x.orderDetailId == orderDetailId).Select((x) => x.orderNumber).First();
-            order ChangeToDone = new order();
-            ChangeToDone.done = true;
+            var GetOrderNumber = context.orderDetail.Where((x) => x.orderDetailId == orderDetailId).Select((x) => x.orderNumber).First();
+            context.order.Where((x) => x.orderNumber == GetOrderNumber).First().done = true;
             context.SaveChanges();
-            return RedirectToAction("DoneOrderDetail");
+            return RedirectToAction("DoneOrderItems");
         }
     }
 }
