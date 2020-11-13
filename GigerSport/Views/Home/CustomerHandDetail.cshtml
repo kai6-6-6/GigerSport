@@ -91,15 +91,14 @@
                             <select name="LeaderMark" required>
                                 @if (player.leader == true)
                                 {
-                                    <option value=@player.leader>有隊長標記</option>
+                                    <option value=true>有隊長標記</option>
+                                    <option value=false>無隊長標記</option>
                                 }
                                 else
                                 {
-                                    <option value=@player.leader>無隊長標記</option>
+                                    <option value=false>無隊長標記</option>
+                                    <option value=true>有隊長標記</option>
                                 }
-
-                                <option value=false>無隊長標記</option>
-                                <option value=true>有隊長標記</option>
                             </select>
                         </td>
                     </tr>
@@ -132,7 +131,6 @@
 </div>
 
 <script>
-        <script>
         $(".add_player").click(function () {
             $(".players").append(`
                             <tr class="player">
@@ -162,5 +160,4 @@
         $(".minus_player").click(function () {
             $(".player").last().remove();
         })
-</script>
 </script>

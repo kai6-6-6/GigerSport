@@ -87,18 +87,17 @@
                             </select>
                         </td>
                         <td>
-                            <select name="LeaderMark" required>
+                            <select name="LeaderMark" disabled="true" required>
                                 @if (player.leader == true)
                                 {
-                                    <option value=@player.leader>有隊長標記</option>
+                                    <option value=true>有隊長標記</option>
+                                    <option value=false>無隊長標記</option>
                                 }
                                 else
                                 {
-                                    <option value=@player.leader>無隊長標記</option>
-                                }
-
-                                <option value=false>無隊長標記</option>
+                                    <option value=false>無隊長標記</option>
                                 <option value=true>有隊長標記</option>
+                                }
                             </select>
                         </td>
                     </tr>
