@@ -15,7 +15,7 @@
                 <h3>中文字體</h3>
                 @foreach (var item in Model.chinsesFontLists)
                 {
-                    <input type="text" class="notChanged" value=@item.chineseFontName>
+                    <input type="text" class="notChanged" value=@item.chineseFontName disabled="true">
                 }
             </div>
             <div class="col d-flex flex-column engilshFont">
@@ -25,7 +25,7 @@
                 <h3>英文字體</h3>
                 @foreach (var item in Model.engilshFontLists)
                 {
-                    <input type="text" class="notChanged" value=@item.engilshFontName>
+                    <input type="text" class="notChanged" value=@item.engilshFontName disabled="true">
                 }
             </div>
             <div class="col d-flex flex-column fontColor">
@@ -35,7 +35,7 @@
                 <h3>文字顏色</h3>
                 @foreach (var item in Model.fontColorLists)
                 {
-                    <input type="text" class="notChanged" value=@item.fontColorName>
+                    <input type="text" class="notChanged" value=@item.fontColorName disabled="true">
                 }
             </div>
             <div class="col d-flex flex-column numberFont">
@@ -45,7 +45,7 @@
                 <h3>數字字體</h3>
                 @foreach (var item in Model.numberFontLists)
                 {
-                    <input type="text" class="notChanged" value=@item.numberFontName>
+                    <input type="text" class="notChanged" value=@item.numberFontName disabled="true">
                 }
             </div>
             <div class="col d-flex flex-column size">
@@ -55,7 +55,7 @@
                 <h3>尺寸大小</h3>
                 @foreach (var item in Model.sizeList)
                 {
-                    <input type="text" class="notChanged" value=@item.sizeName>
+                    <input type="text" class="notChanged" value=@item.sizeName disabled="true">
                 }
             </div>
             <div class="col d-flex flex-column style">
@@ -65,7 +65,7 @@
                 <h3>樣式</h3>
                 @foreach (var item in Model.styleLists)
                 {
-                    <input type="text" class="notChanged" value=@item.styleName>
+                    <input type="text" class="notChanged" value=@item.styleName disabled="true">
                 }
             </div>
         </div>
