@@ -1,5 +1,5 @@
 ﻿@model GigerSport.Models.EditDetaiModel
-
+<link href="~/Assets/css/DisplayItem.css" rel="stylesheet" />
 @{
     ViewBag.Title = "CustomerHandDetail";
 }
@@ -108,7 +108,7 @@
     }
     <button type="button" class="add_player">新增球員</button>
     <button type="button" class="minus_player">減少球員</button>
-    <input name="UndoneOrderId" display="none" value=@Model.detailModel.OrderDetailId />
+    <input name="UndoneOrderId" value=@Model.detailModel.OrderDetailId class="dis_OrderDetailId" />
     <button class="KeepEdit" type="submit">確認新增訂單</button>
 }
 
