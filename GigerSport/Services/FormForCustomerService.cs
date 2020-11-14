@@ -13,7 +13,7 @@ namespace GigerSport.Services
         public void MakeFormForCustomer()
         {
             string Desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            var filePath = $@"{Desktop}\Giger Sport訂購單.xlsx";
+            var file = new FileInfo($@"{Desktop}\Giger Sport訂購單.xlsx");
             ExcelPackage ep = new ExcelPackage();
             ExcelWorksheet sheet = ep.Workbook.Worksheets.Add("訂購單");
             sheet.Cells["A1:K1"].Merge = true;
@@ -123,11 +123,10 @@ namespace GigerSport.Services
             sheet.PrinterSettings.Orientation = eOrientation.Portrait;
             sheet.PrinterSettings.HorizontalCentered = true;
             sheet.PrinterSettings.FitToPage = true;
-
-            filePath = HttpContext.Current.Server.MapPath("Giger Sport訂購單.xlsx");
-            FileInfo fi = new FileInfo(filePath);
-            ep.SaveAs(fi);
+            ep.SaveAs(file);
             ep.Dispose();
+
+
 
 
         }
