@@ -50,9 +50,9 @@ namespace GigerSport.Services
             sheet.Cells["A1"].Value = "姓名/隊名:";
             sheet.Cells["A2"].Value = "備註";
             sheet.Cells["A3"].Value = "編號";
-            sheet.Cells["B1:C1"].Value = detail.Department;
+            sheet.Cells["B1:C1"].Value = detail.Department.ToString();
             sheet.Cells["D1"].Value = "款式/顏色:";
-            sheet.Cells["E1:F1"].Value = detail.Style;
+            sheet.Cells["E1:F1"].Value = detail.Style.ToString();
             sheet.Cells["B2:F2"].Value = "沒標註就是男版版型，前米通145G反面印刷，後A186，交叉領褲子要口袋";
             sheet.Cells["B3"].Value = "姓名/隊名";
             sheet.Cells["C3"].Value = "號碼";
@@ -63,13 +63,14 @@ namespace GigerSport.Services
             sheet.Cells[$"D{PLayersMembers + 4}"].Value = PLayersMembers;
             sheet.Cells[$"E{PLayersMembers + 4}"].Value = PLayersMembers;
             int j = 0;
-            for(var i=4;i<= PLayersMembers + 4; i++)
+            for(var i=4;i<= PLayersMembers + 3; i++)
             {
-                sheet.Cells[$"A{i}"].Value = j+1;
-                sheet.Cells[$"B{i}"].Value = detail.FrontWord;
-                sheet.Cells[$"C{i}"].Value = detail.Players[j].number;
-                sheet.Cells[$"D{i}"].Value = detail.Players[j].size;
-                sheet.Cells[$"E{i}"].Value = detail.Players[j].size;
+                sheet.Row(i).Height = 20;
+                sheet.Cells[$"A{i}"].Value = (j+1).ToString();
+                sheet.Cells[$"B{i}"].Value = detail.FrontWord.ToString();
+                sheet.Cells[$"C{i}"].Value = detail.Players[j].number.ToString();
+                sheet.Cells[$"D{i}"].Value = detail.Players[j].size.ToString();
+                sheet.Cells[$"E{i}"].Value = detail.Players[j].size.ToString();
                 if (detail.Players[j].leader == true) { sheet.Cells[$"F{i}"].Value = "隊長標記"; }
                 j++;
             }

@@ -126,6 +126,7 @@ namespace GigerSport.Services
                               select new DetailModel
                               {
                                   OrderDetailId = od.orderDetailId,
+                                  OrderNumber=o.orderNumber,
                                   Customer = ct.customerName,
                                   Phone = ct.phone,
                                   Email = ct.email,

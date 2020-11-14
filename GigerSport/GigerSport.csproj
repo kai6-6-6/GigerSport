@@ -251,6 +251,7 @@
     <Content Include="Assets\css\sb-admin-2.min.css" />
     <Content Include="Assets\css\select2.min.css" />
     <Content Include="Assets\css\util.css" />
+    <Content Include="Assets\img\BankInfo.png" />
     <Content Include="Assets\img\favicon.ico" />
     <Content Include="Assets\img\JIGER-LOGO商標-02.png" />
     <Content Include="Assets\img\JIGER-LOGO商標-03.png" />

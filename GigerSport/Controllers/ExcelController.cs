@@ -19,16 +19,18 @@ namespace GigerSport.Controllers
         public ActionResult ForFactory(int orderid)
         {
             GetOrderService GetOrderservice = new GetOrderService();
-            var OrderDetail = GetOrderservice.EditOrderDetail(orderid);
+            var OrderDetail = GetOrderservice.UnDoneOrderDetail(orderid);
             FormForFactoryService MakeForm = new FormForFactoryService();
-            MakeForm.MakeFormForFactory(OrderDetail.detailModel);
-            return RedirectToAction("UnDoneOrderDetail", "Order", orderid);
+            MakeForm.MakeFormForFactory(OrderDetail);
+            return RedirectToAction("UnDoneOrderDetail", "Order", new { orderNumber=OrderDetail.OrderNumber });
         }
         public ActionResult ForQuotation(int orderid)
         {
             GetOrderService GetOrderservice = new GetOrderService();
-            var OrderDetail = GetOrderservice.EditOrderDetail(orderid);
-            return View();
+            var OrderDetail = GetOrderservice.UnDoneOrderDetail(orderid);
+            QuotationService MakeForm = new QuotationService();
+            MakeForm.MakeFormForCustomer(OrderDetail);
+            return RedirectToAction("UnDoneOrderDetail", "Order", new { orderNumber = OrderDetail.OrderNumber });
         }
     }
 }
