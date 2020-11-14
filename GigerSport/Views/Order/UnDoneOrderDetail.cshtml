@@ -4,6 +4,7 @@
     ViewBag.Title = "UnDoneOrderDetail";
 }
 <h2>未完成訂單細節</h2>
+@Html.ActionLink("輸出工廠訂單", "ForFactory", "Excel", null, new { @class = "ExportForm" })
 
 @using (Html.BeginForm())
 {
@@ -96,7 +97,7 @@
                                 else
                                 {
                                     <option value=false>無隊長標記</option>
-                                <option value=true>有隊長標記</option>
+                                    <option value=true>有隊長標記</option>
                                 }
                             </select>
                         </td>
@@ -108,7 +109,7 @@
     <button type="button" class="add_player" disabled="true">新增球員</button>
     <button type="button" class="minus_player" disabled="true">減少球員</button>
 
-    <input name="OrderDetailId"  value=@Model.detailModel.OrderDetailId class="dis_OrderDetailId" />
+    <input name="OrderDetailId" value=@Model.detailModel.OrderDetailId class="dis_OrderDetailId" />
     <a class="btn-group" href="~/Views/" data-toggle="modal" data-target="#finishModal">
         已完成訂單
     </a>
