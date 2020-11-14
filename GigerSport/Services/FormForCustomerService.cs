@@ -13,7 +13,7 @@ namespace GigerSport.Services
         public void MakeFormForCustomer()
         {
             string Desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            var file = new FileInfo($@"{Desktop}\Giger Sport訂購單.xlsx");
+            var file = new FileInfo(@"C:\Users\lovem\Desktop\Giger Sport訂購單.xlsx");
             ExcelPackage ep = new ExcelPackage();
             ExcelWorksheet sheet = ep.Workbook.Worksheets.Add("訂購單");
             sheet.Cells["A1:K1"].Merge = true;
