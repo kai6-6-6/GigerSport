@@ -129,7 +129,7 @@ namespace GigerSport.Controllers
             ep.SaveAs(fileStream);
             ep.Dispose();
             fileStream.Position = 0;
-            return File(fileStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Giger Sport訂購單.xlsx");
+            return File(fileStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Jiger Sport訂購單.xlsx");
         }
         [Authorize]
         public ActionResult ForFactory(int orderid)
