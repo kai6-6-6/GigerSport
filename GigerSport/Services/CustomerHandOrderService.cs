@@ -49,8 +49,8 @@ namespace GigerSport.Services
                                              EngilshFontId= undoneO.chineseFontId,
                                              NumberFont=context.numberFont.Where((x)=>x.numberFontId== undoneO.numberFontId).Select((x)=>x.numberFontName).FirstOrDefault(),
                                              NumberFontId= undoneO.numberFontId,
-                                             FontColor=context.numberFont.Where((x)=>x.numberFontId== undoneO.numberFontId).Select((x)=>x.numberFontName).FirstOrDefault(),
-                                             FontColorId= undoneO.numberFontId,
+                                             FontColor=context.fontColor.Where((x)=>x.fontColorId== undoneO.fontColorId).Select((x)=>x.fontColorName).FirstOrDefault(),
+                                             FontColorId= undoneO.fontColorId,
                                              Quantity= undoneO.quantity,
                                              Players=(from undonrP in context.undonePlayer
                                                       where undonrP.undoneorderDetailId== undoneO.undoneOrderId

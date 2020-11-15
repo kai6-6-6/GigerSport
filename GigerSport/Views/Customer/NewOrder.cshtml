@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "NewOrder";
-    Layout = "";
+    Layout = "~/Views/Shared/FormLayout.cshtml";
 }
 
 <h2>Giger Sport訂購單</h2>
@@ -17,8 +17,8 @@
     <input type="text" placeholder="統一編號" class="" name="Tex" />
     <input type="text" placeholder="學校" class="" name="Department" />
     <input type="text" placeholder="科系" class="" name="Major" />
-    <input type="text" placeholder="正面內容" class="" name="FrontWord" required/>
-    <input type="text" placeholder="背面內容" class="" name="BackWord" required/>
+    <input type="text" placeholder="正面內容" class="" name="FrontWord" required />
+    <input type="text" placeholder="背面內容" class="" name="BackWord" required />
     <input type="text" placeholder="數量" class="" name="Quantity" required />
     <select name="ChineseFont" required>
         <option value=null selected disabled hidden>中文字體</option>
@@ -57,8 +57,8 @@
     </select>
     <button type="button" class="add_player">新增球員</button>
     <button type="button" class="minus_player">減少球員</button>
-    <input class="comfirm" value='送出訂單' type='submit'>
     <div class="players"></div>
+<input class="comfirmBtn" value='送出訂單' type='submit'>
 
 
 
@@ -68,9 +68,10 @@
 
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-<script>
-        $(".comfirm").click(function () { alert("訂單已送出，請通知Giger Sport!"); });
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+        $(".comfirmBtn").click(function () { alert("訂單已送出，請通知Giger Sport!"); });
         $(".add_player").click(function () {
             $(".players").append(`
                             <div class="player">
@@ -93,5 +94,5 @@
         $(".minus_player").last().click(function () {
             $(".player").last().remove();
         })
-</script>
+    </script>
 }

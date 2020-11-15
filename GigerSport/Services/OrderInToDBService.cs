@@ -17,7 +17,8 @@ namespace GigerSport.Services
             GigerSportRepository<order> Ride_order = new GigerSportRepository<order>(context);
             GigerSportRepository<orderDetail> Ride_orderDetail = new GigerSportRepository<orderDetail>(context);
             GigerSportRepository<player> Ride_player = new GigerSportRepository<player>(context);
-            var makeCustomerId = context.customer.Select((x) => x.customerId).Max();
+            int makeCustomerId;
+            try { makeCustomerId = context.customer.Select((x) => x.customerId).Max(); } catch { makeCustomerId = 1; }
             int makeOrderDetailId;
             try { makeOrderDetailId= context.orderDetail.Select((x) => x.orderDetailId).Max(); } catch { makeOrderDetailId = 1; }
             var FindCustomer = context.customer.FirstOrDefault((x) => x.customerName == Name);
@@ -42,6 +43,7 @@ namespace GigerSport.Services
                 };
                 Ride_customer.Create(AddCustomer);
             }
+            context.SaveChanges();
             var OrderNumber = int.Parse(DateTime.Now.ToString("MMddHHmm"));
             order AddOrder = new order()
             {
@@ -51,6 +53,7 @@ namespace GigerSport.Services
                 done = false
             };
             Ride_order.Create(AddOrder);
+            context.SaveChanges();
             bool HasplayerList = false;
             if (PlayerName != null)
             {
@@ -94,7 +97,7 @@ namespace GigerSport.Services
                 discount = Discount,
                 amount = Convert.ToDecimal(context.style.Where((x) => x.styleId == Style).Select((x) => x.price).First() * Quantity * Discount),
                 img = Img,
-                playerName = HasplayerList
+                playerName = HasplayerList,
             };
             Ride_orderDetail.Create(AddOrderDetail);
             context.SaveChanges();

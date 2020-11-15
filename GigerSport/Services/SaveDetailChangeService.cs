@@ -53,7 +53,9 @@ namespace GigerSport.Services
             {
                 var GetPlayer = context.player.Where((x) => x.orderDetailId == OrderDetailId);
                 foreach (var item in GetPlayer) { Change_player.Delete(item); }
-                var makePlayerId = context.player.Select((x) => x.playerId).Max();
+
+                int makePlayerId;
+                try { makePlayerId = context.player.Select((x) => x.playerId).Max(); } catch { makePlayerId = 1; }
                 for (var i = 0; i < PlayerName.Length; i++)
                 {
                     player AddPlayer = new player()

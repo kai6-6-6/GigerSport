@@ -36,6 +36,7 @@ namespace GigerSport.Services
         {
             var ListItem = (from o in context.order
                             join ct in context.customer on o.customerId equals ct.customerId
+                            join od in context.orderDetail on o.orderNumber equals od.orderNumber
                             where o.done == false
                             select new orderItemModel
                             {
@@ -46,9 +47,7 @@ namespace GigerSport.Services
                                 Email = ct.email,
                                 Major = ct.major,
                                 Done = o.done,
-                                Amount = (from od in context.orderDetail
-                                          where od.orderNumber == o.orderNumber
-                                          select new { od.amount }).Sum(p => p.amount)
+                                Amount = od.amount
                             }).ToList();
             return ListItem;
         }

@@ -304,6 +304,7 @@
     <Content Include="Views\Home\System.cshtml" />
     <Content Include="Views\Home\CustomerHandItem.cshtml" />
     <Content Include="Views\Home\CustomerHandDetail.cshtml" />
+    <Content Include="Views\Shared\FormLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
