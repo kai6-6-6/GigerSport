@@ -42,7 +42,8 @@ namespace GigerSport.Services
                              select new StyleList
                              {
                                  styleId = s.styleId,
-                                 styleName = s.styleName
+                                 styleName = s.styleName,
+                                 price=s.price
                              }).ToList();
             var SizeList = (from size in context.size
                             select new SizeList
