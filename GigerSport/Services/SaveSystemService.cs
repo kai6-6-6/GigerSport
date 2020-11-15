@@ -19,12 +19,18 @@ namespace GigerSport.Services
             GigerSportRepository<numberFont> add_numberFont = new GigerSportRepository<numberFont>(context);
             GigerSportRepository<size> add_size = new GigerSportRepository<size>(context);
             GigerSportRepository<style> ad_style = new GigerSportRepository<style>(context);
-            int MakeChinsesFontId = context.chineseFont.Select((x) => x.chineseFontId).Max() + 1;
-            int MakeEngilshFontId = context.engilshFont.Select((x) => x.engilshFontId).Max() + 1;
-            int MakeFontColorId = context.fontColor.Select((x) => x.fontColorId).Max() + 1;
-            int MakeNumberFontId = context.numberFont.Select((x) => x.numberFontId).Max() + 1;
-            int MakeSizeId = context.size.Select((x) => x.sizeId).Max() + 1;
-            int MakeStyleId = context.style.Select((x) => x.styleId).Max() + 1;
+            int MakeChinsesFontId;
+            int MakeEngilshFontId;
+            int MakeFontColorId;
+            int MakeNumberFontId;
+            int MakeSizeId;
+            int MakeStyleId;
+            try { MakeChinsesFontId = context.chineseFont.Select((x) => x.chineseFontId).Max() + 1; } catch { MakeChinsesFontId = 1; }
+            try { MakeEngilshFontId = context.engilshFont.Select((x) => x.engilshFontId).Max() + 1; } catch { MakeEngilshFontId = 1; }
+            try { MakeFontColorId = context.fontColor.Select((x) => x.fontColorId).Max() + 1; } catch { MakeFontColorId = 1; }
+            try { MakeNumberFontId = context.numberFont.Select((x) => x.numberFontId).Max() + 1; } catch { MakeNumberFontId = 1; }
+            try { MakeSizeId = context.size.Select((x) => x.sizeId).Max() + 1; } catch { MakeSizeId = 1; }
+            try { MakeStyleId = context.style.Select((x) => x.styleId).Max() + 1; } catch { MakeStyleId = 1; }
             if (chinsesFont != null) {
             for(var i =0;i< chinsesFont.Length; i++)
             {
