@@ -93,7 +93,7 @@ namespace GigerSport.Services
             } }
             for(var i = 0; i < price.Length; i++)
             {
-                var styleid = context.style.Where((x) => x.styleId == i).FirstOrDefault();
+                var styleid = context.style.Where((x) => x.styleId == i+1).FirstOrDefault();
                 styleid.price = price[i];
             }
             context.SaveChanges();
