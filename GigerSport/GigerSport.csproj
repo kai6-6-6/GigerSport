@@ -246,6 +246,7 @@
     <Content Include="Assets\css\DisplayItem.css" />
     <Content Include="Assets\css\main.css" />
     <Content Include="Assets\css\sb-admin-2.min.css" />
+    <Content Include="Assets\css\Layout.css" />
     <Content Include="Assets\css\select2.min.css" />
     <Content Include="Assets\css\util.css" />
     <Content Include="Assets\img\BankInfo.png" />
