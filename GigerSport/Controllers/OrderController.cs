@@ -11,6 +11,7 @@ namespace GigerSport.Controllers
     public class OrderController : Controller
     {
         private GetOrderService GetOrderservice = new GetOrderService();
+        [Authorize]
         public ActionResult CreateOrder()
         {
             CreateProductListService _GetProduct = new CreateProductListService();
@@ -25,21 +26,25 @@ namespace GigerSport.Controllers
             intoDB.InToDB(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize);
             return RedirectToAction("UnDoneOrderItem");
         }
+        [Authorize]
         public ActionResult DoneOrderItems()
         {
             var OrderItem = GetOrderservice.DoneOrderItem();
             return View(OrderItem);
         }
+        [Authorize]
         public ActionResult DoneOrderDetail(int orderNumber)
         {
             var OrderDetail = GetOrderservice.DoneOrderDetail(orderNumber);
             return View(OrderDetail);
         }
+        [Authorize]
         public ActionResult UnDoneOrderItem()
         {
             var OrderItem = GetOrderservice.UnDoneOrderItem();
             return View(OrderItem);
         }
+        [Authorize]
         public ActionResult UnDoneOrderDetail(int orderNumber)
         {
             var OrderDetail = GetOrderservice.EditOrderDetail(orderNumber);
@@ -52,12 +57,14 @@ namespace GigerSport.Controllers
             SaveEdit.Save(Name, Phone, Address, Email, Tex, Department, FrontWord, FrontWordSize, BackWord, BackWordSize, Major, Quantity, Discount, Img, ChineseFontWord, EngilshFontWord, FontColor, NumberFontWord, Style, PlayerNumber, PlayerName, LeaderMark, PlayerSize, OrderDetailId);
             return RedirectToAction("UnDoneOrderItem");
         }
+        [Authorize]
         public ActionResult DeleteDetail(int orderDetailId)
         {
             DeleteOrderService deleteOrder = new DeleteOrderService();
             deleteOrder.DeleteTarget(orderDetailId);
             return RedirectToAction("Index", "Home");
         }
+        [Authorize]
         public ActionResult FinishDetail(int orderDetailId)
         {
             GigerSportDB context = new GigerSportDB();

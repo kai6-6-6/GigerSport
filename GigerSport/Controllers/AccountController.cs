@@ -39,7 +39,7 @@ namespace GigerSport.Controllers
                 _signInManager = value; 
             }
         }
-
+            
         public ApplicationUserManager UserManager
         {
             get

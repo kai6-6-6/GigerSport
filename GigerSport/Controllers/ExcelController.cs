@@ -13,6 +13,7 @@ namespace GigerSport.Controllers
 {
     public class ExcelController : Controller
     {
+        [Authorize]
         public ActionResult ForCustomer()
         {
             ExcelPackage ep = new ExcelPackage();
@@ -130,7 +131,7 @@ namespace GigerSport.Controllers
             fileStream.Position = 0;
             return File(fileStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Giger Sport訂購單.xlsx");
         }
-
+        [Authorize]
         public ActionResult ForFactory(int orderid)
         {
             GetOrderService GetOrderservice = new GetOrderService();
@@ -199,7 +200,7 @@ namespace GigerSport.Controllers
             fileStream.Position = 0;
             return File(fileStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", $"{OrderDetail.Customer}-工廠訂單.xlsx");
         }
-    
+        [Authorize]
         public ActionResult ForQuotation(int orderid)
         {
             GetOrderService GetOrderservice = new GetOrderService();

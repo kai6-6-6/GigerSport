@@ -9,17 +9,19 @@ namespace GigerSport.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult CustomerHandItem()
         {
             CustomerHandOrderService CustomerHand = new CustomerHandOrderService();
             var OrderItem = CustomerHand.CustomerOrderItem();
             return View(OrderItem);
         }
+        [Authorize]
         public ActionResult CustomerHandDetail(int undoneOrderId)
         {
             CustomerHandOrderService GetCustoerOrderDetail = new CustomerHandOrderService();
@@ -35,12 +37,14 @@ namespace GigerSport.Controllers
             Delete.DeleteUndoneOrder(UndoneOrderId);
             return RedirectToAction("CustomerHandItem");
         }
+        [Authorize]
         public ActionResult DeleteCustomerHandOrder(int undoneOrderId)
         {
             DeleteOrderService Delete = new DeleteOrderService();
             Delete.DeleteUndoneOrder(undoneOrderId);
             return RedirectToAction("CustomerHandItem");
         }
+        [Authorize]
         public ActionResult System()
         {
             CreateProductListService GetAllList = new CreateProductListService();
