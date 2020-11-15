@@ -11,7 +11,7 @@ namespace GigerSport.Services
     public class SaveSystemService
     {
         private GigerSportDB context = new GigerSportDB();
-        public void SaveSystem(string[] chinsesFont, string[] engilshFont, string[] fontColor, string[] numberFont, string[] size, string[] style)
+        public void SaveSystem(string[] chinsesFont, string[] engilshFont, string[] fontColor, string[] numberFont, string[] size, string[] style,int[] price)
         {
             GigerSportRepository<chineseFont> add_chineseFont = new GigerSportRepository<chineseFont>(context);
             GigerSportRepository<engilshFont> add_engilshFont = new GigerSportRepository<engilshFont>(context);
@@ -91,6 +91,11 @@ namespace GigerSport.Services
                 };
                 ad_style.Create(stList);
             } }
+            for(var i = 0; i < price.Length; i++)
+            {
+                var styleid = context.style.Where((x) => x.styleId == i).FirstOrDefault();
+                styleid.price = price[i];
+            }
             context.SaveChanges();
         }
     }

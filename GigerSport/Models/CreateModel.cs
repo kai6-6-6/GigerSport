@@ -30,6 +30,7 @@ namespace GigerSport.Models
     {
         public int styleId { get; set; }
         public string styleName { get; set; }
+        public int price { get; set; }
     }
     public class SizeList
     {

@@ -52,10 +52,10 @@ namespace GigerSport.Controllers
             return View(ProductList);
         }
         [HttpPost]
-        public ActionResult System(string[] chinsesFont,string[] engilshFont,string[] fontColor,string[] numberFont,string[] size,string[] style)
+        public ActionResult System(string[] chinsesFont,string[] engilshFont,string[] fontColor,string[] numberFont,string[] size,string[] style,int[] price)
         {
             SaveSystemService Save = new SaveSystemService();
-            Save.SaveSystem(chinsesFont, engilshFont, fontColor, numberFont, size, style);
+            Save.SaveSystem(chinsesFont, engilshFont, fontColor, numberFont, size, style, price);
             return RedirectToAction("System");
         }
     }
